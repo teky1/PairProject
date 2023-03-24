@@ -5,7 +5,7 @@ public class Test {
 		
 		System.out.println("yo");
 		System.out.println("joel2");
-		System.out.println("dia");
+		System.out.println("dia2");
 		System.out.println("mard2");
 		
 	}
