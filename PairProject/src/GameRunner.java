@@ -1,6 +1,10 @@
+import javax.swing.JPanel;
+
 public class GameRunner {
+	private JPanel panel;
+	
 	public GameRunner() {
-		
+		panel = new GamePanel();
 	}
 	
 	public static void main(String[] args) {
