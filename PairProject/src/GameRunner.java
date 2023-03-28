@@ -13,5 +13,7 @@ public class GameRunner {
 		System.out.println("joel2");
 		System.out.println("dia2");
 		System.out.println("mard2");
+		
+		
 	}
 }
