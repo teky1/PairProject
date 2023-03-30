@@ -4,15 +4,15 @@ import java.awt.Point;
 public class Ball extends GameObject {
 	
 	private Image sprite;
-	private Point.double pos;
+	private Point.Double pos;
 	private int dimX;
 	private int dimY;
 	
-	public Ball() {
-		
+	public Ball(int dimX, int dimY) {
+		super(dimX, dimY);
 	}
 	
-	public int getPos() {
+	public Point.Double getPos() {
 		return pos;
 	}
 	
