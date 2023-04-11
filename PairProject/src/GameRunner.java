@@ -4,7 +4,8 @@ public class GameRunner {
 	private JPanel panel;
 	
 	public GameRunner() {
-		panel = new GamePanel();
+		panel = new GamePanel(new Game(), this);
+		
 	}
 	
 	public static void main(String[] args) {

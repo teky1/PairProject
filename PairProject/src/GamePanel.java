@@ -1,15 +1,12 @@
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class GamePanel extends JPanel implements MouseMotionListener, MouseListener{
-	
-	// Represent the respective instances of game and game runner
 	private Game game;
 	private GameRunner gameRunner;
-	
-	// 
 	private int width;
 	private int height;
 	
@@ -19,8 +16,8 @@ public class GamePanel extends JPanel implements MouseMotionListener, MouseListe
 		this.gameRunner = gameRunner;
 		this.width = 500;
 		this.height = 500;
-		
-		addMouse
+		this.addMouseMotionListener(new Clicker());
+		this.addMouseListener(new Clicker());
 	}
 	
 	/* Gets the current mouse position relative to the top left
@@ -30,5 +27,20 @@ public class GamePanel extends JPanel implements MouseMotionListener, MouseListe
 	
 	public void paintComponent(Graphics g) {
 		
+	}
+	
+	public void mouseClicked(MouseEvent e) {
+	}
+	public void mousePressed(MouseEvent e) {
+	}
+	public void mouseReleased(MouseEvent e) {
+	}
+	public void mouseEntered(MouseEvent e) {
+	}
+	public void mouseExited(MouseEvent e) {
+	}
+	public void mouseDragged(MouseEvent e) {
+	}
+	public void mouseMoved(MouseEvent e) {
 	}
 }
