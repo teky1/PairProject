@@ -23,7 +23,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, MouseListe
 	/* Gets the current mouse position relative to the top left
 	 * corner of the JPanel
 	 */
-	public 
 	
 	public void paintComponent(Graphics g) {
 		
