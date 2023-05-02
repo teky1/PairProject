@@ -5,6 +5,17 @@ public class Level {
 		
 	}
 	
+	public boolean testForCollision(Ball b) {
+		return false;
+	}
+	
+	public void updateBlocks() {
+		
+	}
+	
+	
+	
+	
 	
 	
 }
