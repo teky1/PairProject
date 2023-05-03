@@ -1,7 +1,10 @@
+import java.io.File;
 
 public class Level {
 	
-	Level() {
+//	private 
+	
+	Level(File locations) {
 		
 	}
 	
@@ -12,9 +15,6 @@ public class Level {
 	public void updateBlocks() {
 		
 	}
-	
-	
-	
 	
 	
 	
