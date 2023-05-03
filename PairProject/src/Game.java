@@ -1,5 +1,20 @@
 public class Game {
-	public void runGame() {
-		//DO STUFF DIA IM SORRY IM SO BAD AT WRITING CODE BUT IDK WHY JOEL WANTED TO MAKE THIS CLASS THAT STUPID IDIOIT!!!!!
+	
+	Ball ball;
+	Platform platform;
+	Level currentLevel;
+	
+	Game() {
+		ball = new Ball();
+		platform = new Platform();
 	}
+	
+	public void loadLevel(Level level) {
+		
+	}
+	
+	public void runGame() {
+		
+	}
+	
 }

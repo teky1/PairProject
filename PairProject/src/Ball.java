@@ -5,11 +5,11 @@ public class Ball extends GameObject {
 	
 	private Image sprite;
 	private Point.Double pos;
-	private int dimX;
-	private int dimY;
+	private int dimX = 5;
+	private int dimY = 5;
 	
-	public Ball(int dimX, int dimY) {
-		super(dimX, dimY);
+	public Ball() {
+		super(5, 5);
 	}
 	
 	public Point.Double getPos() {

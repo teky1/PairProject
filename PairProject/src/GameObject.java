@@ -20,7 +20,8 @@ public class GameObject {
 	
 	// Initializes position of gameobj
 	GameObject(int posX, int posY) {
-		
+		this.posX = posX;
+		this.posY = posY;
 	}
 	
 	// returns sprite
@@ -33,6 +34,12 @@ public class GameObject {
 		sprite = newSprite;
 	}
 	
+	public int getX() {
+		return posX;
+	}
 	
+	public void setX(int newVal) {
+		posX = newVal;
+	}
 	
 }

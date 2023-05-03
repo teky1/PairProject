@@ -1,60 +1,55 @@
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class GamePanel extends JPanel implements MouseMotionListener, MouseListener{
+public class GamePanel extends JPanel {
+	
+	// Represent the respective instances of game and game runner
 	private Game game;
 	private GameRunner gameRunner;
+	
+	// 
 	private int width;
 	private int height;
 	
-	// Inititialize stfuf and setup listeners
+	//Inititialize  stfuf and setup listeners
 	public GamePanel(Game game, GameRunner gameRunner) {
 		this.game = game;
 		this.gameRunner = gameRunner;
 		this.width = 500;
 		this.height = 500;
-		this.addMouseMotionListener(new Clicker());
-		this.addMouseListener(new Clicker());
 	}
 	
 	/* Gets the current mouse position relative to the top left
 	 * corner of the JPanel
 	 */
-	public 
+	public Point getMousePosition() {
+		PointerInfo mouseInfo = MouseInfo.getPointerInfo();
+		Point mousePos = mouseInfo.getLocation();
+		
+		SwingUtilities.convertPointFromScreen(mousePos, this);
+		
+		return mousePos;
+	}
+	
+	public void renderFrame() {
+		repaint();
+	}
 	
 	public void paintComponent(Graphics g) {
 		
-	}
-	
-	public void mouseClicked(MouseEvent e) {
+		super.paintComponent(g);
+		Graphics2D g = (Graphics2D) graphics;
+		
+		
 		
 	}
-	
-	public void mousePressed(MouseEvent e) {
-		
-	}
-	
-	public void mouseReleased(MouseEvent e) {
-		
-	}
-	
-	public void mouseEntered(MouseEvent e) {
-		
-	}
-	
-	public void mouseExited(MouseEvent e) {
-		
-	}
-	
-	public void mouseDragged(MouseEvent e) {
-		
-	}
-	
-	public void mouseMoved(MouseEvent e) {
-		
-	}
-	
+
 }
