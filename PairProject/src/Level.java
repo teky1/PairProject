@@ -2,7 +2,7 @@ import java.io.File;
 
 public class Level {
 	
-//	private 
+	private int[][] coordinates;
 	
 	Level(File locations) {
 		
