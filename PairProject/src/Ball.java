@@ -1,32 +1,22 @@
 import java.awt.Image;
 import java.awt.Point;
+import java.io.IOException;
 
-public class Ball extends GameObject {
+import javax.imageio.ImageIO;
+
+public class Ball extends MovingGameObject {
 	
+	private Game game;
 	
-	public Ball() {
-		super(0, 0);
+	public Ball(Game g) {
+		game = g;
+		super(0, 0, 0, 0);
 		
+		setDim(10, 10);
+		setSprite("ball.png");
 	}
 	
-	public Point.Double getPos() {
-		return pos;
-	}
 	
-	public int getDimX() {
-		return dimX;
-	}
-	
-	public int getDimY() {
-		return dimY;
-	}
-	
-	public void setDimX(int x) {
-		dimX = x;
-	}
-	
-	public void setDimY(int y) {
-		dimY = y;
-	}
+
 	
 }

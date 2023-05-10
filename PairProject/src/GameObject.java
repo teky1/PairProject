@@ -1,4 +1,7 @@
 import java.awt.Image;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 
 /*
@@ -43,8 +46,19 @@ public class GameObject {
 	}
 	
 	// changes sprite
-	public void setSprite(Image newSprite) {
-		sprite = newSprite;
+	public void setSprite(String newSprite) {
+		try {
+		    Image sprite = ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
+					getScaledInstance(getDimX(), getDimY(), 0);
+		} catch (IOException e) {
+			System.out.println("Certain sprites not found.");
+			e.printStackTrace();
+		}
+	}
+	
+	// called on each frame
+	public void update(double timeDelta) {
+		
 	}
 	
 	

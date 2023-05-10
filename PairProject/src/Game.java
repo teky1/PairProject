@@ -23,6 +23,12 @@ public class Game {
 		}
 	}
 	
+	public Image getBackgroundImg() {
+		
+		return backgroundImg;
+		
+	}
+	
 	public void loadLevel(int levelCode) {
 		
 		
@@ -40,8 +46,8 @@ public class Game {
 		return level;
 	}
 	
-	public void setLevel() {
-		
+	public void setLevel(Level newLevel) {
+		level = newLevel;
 	}
 	
 }

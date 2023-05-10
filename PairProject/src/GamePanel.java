@@ -24,8 +24,8 @@ public class GamePanel extends JPanel {
 	public GamePanel(Game game, GameRunner gameRunner) {
 		this.game = game;
 		this.gameRunner = gameRunner;
-		this.width = 500;
-		this.height = 500;
+		this.width = 600;
+		this.height = 600;
 	}
 	
 	/* Gets the current mouse position relative to the top left
