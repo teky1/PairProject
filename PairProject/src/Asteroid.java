@@ -1,18 +1,24 @@
 
-<<<<<<< HEAD
-public class Asteroid extends GameObject{
+public class Asteroid extends MovingGameObject {
 	
-	public int mass;
+	public int health;
+	public 
 	
-	public int 
-	
-=======
-public class Asteroid extends GameObject {
-
-	Asteroid(int posX, int posY) {
-		super(posX, posY);
-		// TODO Auto-generated constructor stub
+	Asteroid(int posX, int posY, int velX, int velY) {
+		super(posX, posY, velX, velY);
+		
+		setDim(20,20);
+		setSprite();
+		
 	}
-
->>>>>>> 9469a86b9cf4dbae3181764f6467b2b7aad1d8f1
-}
+	
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public void setHealth(int newHealth) {
+		health = newHealth;
+	}
+	
+	

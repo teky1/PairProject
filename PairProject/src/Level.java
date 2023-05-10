@@ -8,9 +8,12 @@ import java.io.FileReader;
 public class Level {
 	
 	private ArrayList<Asteroid> asteroidList;
+	private ArrayList<Brick> brickList;
 	
-	Level(File locations) throws FileNotFoundException {
+	Level(/*File locations*/) /*throws FileNotFoundException*/ {
 		asteroidList = new ArrayList<Asteroid>();
+		brickList = new ArrayList<Brick>();
+		
 		
 		
 		/*
@@ -34,15 +37,15 @@ public class Level {
 	}
 	
 	public static Level load(int levelCode) {
-		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL -Joel
-	}
-	
-	public boolean testForCollision(Ball b) {
+		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL
+		// THIS IS TEST CODE IM LEAVING HERE FOR NOW -Joel
 		
-		return false;
+		
+		
+		
 	}
 	
-	public void updateBlocks() {
+	public void update() {
 		
 	}
 	
