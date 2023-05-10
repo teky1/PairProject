@@ -1,5 +1,47 @@
+import java.awt.Image;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Game {
-	public void runGame() {
-		//DO STUFF DIA IM SORRY IM SO BAD AT WRITING CODE BUT IDK WHY JOEL WANTED TO MAKE THIS CLASS THAT STUPID IDIOIT!!!!!
+	
+	private Ball ball;
+	private Platform platform;
+	private Level level;
+	private Image backgroundImg;
+	
+	Game() {
+		this.ball = new Ball();
+		this.platform = new Platform();
+		
+		try {
+		    backgroundImg = ImageIO.read(getClass().getClassLoader().getResource("background.png")).
+					getScaledInstance(600, 600, 0);
+		} catch (IOException e) {
+			System.out.println("backgroudn sprites not found.");
+			e.printStackTrace();
+		}
 	}
+	
+	public void loadLevel(int levelCode) {
+		
+		
+	}
+	
+	public Ball getBall() {
+		return ball;
+	}
+	
+	public Platform getPlatform() {
+		return platform;
+	}
+	
+	public Level getLevel() {
+		return level;
+	}
+	
+	public void setLevel() {
+		
+	}
+	
 }

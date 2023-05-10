@@ -18,17 +18,18 @@ public class MainScreen extends JPanel {
 		frame.setContentPane(panel);
 		frame.pack();
 		frame.setVisible(true);
-		playButton = new JButton(new ImageIcon(""));
+		playButton = new JButton("Start");
+//		playButton = new JButton(new ImageIcon(""));
 		playButton.setBounds(10,10,110,60);
 		panel.add(playButton);
 
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//switch screen or something idk
+//				System.out.println("ok");
 			}
 		});
 	}
-	public static void Main(String args[]) {
+	public static void main(String args[]) {
 		new MainScreen();
 	}
 }

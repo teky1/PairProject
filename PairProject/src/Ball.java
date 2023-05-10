@@ -3,13 +3,10 @@ import java.awt.Point;
 
 public class Ball extends GameObject {
 	
-	private Image sprite;
-	private Point.Double pos;
-	private int dimX;
-	private int dimY;
 	
-	public Ball(int dimX, int dimY) {
-		super(dimX, dimY);
+	public Ball() {
+		super(0, 0);
+		
 	}
 	
 	public Point.Double getPos() {
