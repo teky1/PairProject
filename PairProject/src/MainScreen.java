@@ -6,7 +6,7 @@ public class MainScreen extends JPanel {
 	JFrame frame;
 	JPanel panel;
 	JLabel title, logo;
-	JButton playButton;
+	JButton startButton, playButton, Tutorial;
 	
 	public MainScreen() {
 		this.frame = new JFrame("Main Screen");
@@ -18,17 +18,43 @@ public class MainScreen extends JPanel {
 		frame.setContentPane(panel);
 		frame.pack();
 		frame.setVisible(true);
-		playButton = new JButton("Start");
-//		playButton = new JButton(new ImageIcon(""));
-		playButton.setBounds(10,10,110,60);
-		panel.add(playButton);
+		startButton = new JButton("Start");
+//		startButton = new JButton(new ImageIcon(""));
+		startButton.setBounds(10,10,110,60);
+		panel.add(startButton);
 
-		playButton.addActionListener(new ActionListener() {
+		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				System.out.println("ok");
+				difficultySelection();
 			}
 		});
+		frame.setVisible(true);
 	}
+	
+	public void difficultySelection() {
+		Tutorial = new JButton("Tutorial");
+		playButton = new JButton("Play");
+//		Tutorial = new JButton(new ImageIcon(""));
+		Tutorial.setBounds(10,10,110,60);
+		playButton.setBounds(130,10,110,60);
+		panel.add(Tutorial);
+//		playButton = new JButton(new ImageIcon(""));
+		panel.add(playButton);
+		Tutorial.setVisible(true);
+		playButton.setVisible(true);
+		startButton.setVisible(false);
+		
+		Tutorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		playButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.setVisible(true);
+	}
+	
 	public static void main(String args[]) {
 		new MainScreen();
 	}

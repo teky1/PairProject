@@ -11,7 +11,7 @@ public class Game {
 	private Image backgroundImg;
 	
 	Game() {
-		this.ball = new Ball();
+		this.ball = new Ball(this);
 		this.platform = new Platform();
 		
 		try {
