@@ -6,11 +6,11 @@ public class MainScreen extends JPanel {
 	JFrame frame;
 	JPanel panel;
 	JLabel title, logo;
-	JButton startButton, playButton, Tutorial;
+	JButton startButton, Tutorial, storyButton, randomButton;
 	
-	public MainScreen() {
+	public MainScreen(JPanel panel) {
 		this.frame = new JFrame("Main Screen");
-		this.panel = new JPanel();
+		this.panel = panel;
 		panel.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setPreferredSize(new Dimension(800, 700));
@@ -33,22 +33,37 @@ public class MainScreen extends JPanel {
 	
 	public void difficultySelection() {
 		Tutorial = new JButton("Tutorial");
-		playButton = new JButton("Play");
+		storyButton = new JButton("Story");
+		randomButton = new JButton("Random");
 //		Tutorial = new JButton(new ImageIcon(""));
+//		storyButton = new JButton(new ImageIcon(""));
+//		randomButton = new JButton(new ImageIcon(""));
 		Tutorial.setBounds(10,10,110,60);
-		playButton.setBounds(130,10,110,60);
+		storyButton.setBounds(130,10,110,60);
+		randomButton.setBounds(250,10,110,60);
 		panel.add(Tutorial);
-//		playButton = new JButton(new ImageIcon(""));
-		panel.add(playButton);
+		panel.add(storyButton);
+		panel.add(randomButton);
 		Tutorial.setVisible(true);
-		playButton.setVisible(true);
+		storyButton.setVisible(true);
+		randomButton.setVisible(true);
 		startButton.setVisible(false);
 		
 		Tutorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		playButton.addActionListener(new ActionListener() {
+		storyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.setVisible(true);
+		randomButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.setVisible(true);
+		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -56,6 +71,6 @@ public class MainScreen extends JPanel {
 	}
 	
 	public static void main(String args[]) {
-		new MainScreen();
+		new MainScreen(new JPanel());
 	}
 }

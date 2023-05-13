@@ -5,7 +5,7 @@ public class GameRunner {
 	
 	public GameRunner() {
 		panel = new GamePanel(new Game(), this);
-		MainScreen mainScreen = new MainScreen();
+		MainScreen mainScreen = new MainScreen(panel);
 	}
 	
 	public static void main(String[] args) {
