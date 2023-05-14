@@ -20,21 +20,33 @@ public class Asteroid extends MovingGameObject {
 		if(testForBallCollisions()!=null) {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
 			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
-			// preventing crashes for now
-			if(getHealth()!=1) {
-				setHealth(getHealth()-1);
-			}
-			
+			setHealth(getHealth()-1);
 		}
 		
 		setPos(getPos().add(getVelocity().multiply(timeDelta)));
 		
-		if(getPos().getX() <= (13*3+15) || getPos().getX() >= (185*3-15)) {
-			this.setVelocity(getVelocity().multiply(new Vector(-1, 1)));
+//		if(getPos().getX() <= (13*3+15) || getPos().getX() >= (185*3-15)) {
+//			this.setVelocity(getVelocity().multiply(new Vector(-1, 1)));
+//		}
+		
+		if(getPos().getX() <= (13*3+15)) {
+			this.setVelocity(new Vector(Math.abs(getVelocity().getX()), getVelocity().getY()));
 		}
 		
-		if(getPos().getY() <= (13*3+15) || getPos().getY() >= 485) {
-			this.setVelocity(getVelocity().multiply(new Vector(1, -1)));
+		if(getPos().getX() >= (185*3-15)) {
+			this.setVelocity(new Vector(-1*Math.abs(getVelocity().getX()), getVelocity().getY()));
+		}
+		
+//		if(getPos().getY() <= (13*3+15) || getPos().getY() >= 485) {
+//			this.setVelocity(getVelocity().multiply(new Vector(1, -1)));
+//		}
+		
+		if(getPos().getY() <= (13*3+15)) {
+			this.setVelocity(new Vector(getVelocity().getX(), Math.abs(getVelocity().getY())));
+		}
+		
+		if(getPos().getY() >= 485) {
+			this.setVelocity(new Vector(getVelocity().getX(), -1*Math.abs(getVelocity().getY())));
 		}
 		
 	}

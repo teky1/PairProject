@@ -97,6 +97,9 @@ public class GameRunner implements ActionListener {
 			
 			for(Brick brick : game.getLevel().getBricks()) {
 				brick.handleCollisions(ball);
+				for (Asteroid a : game.getLevel().getAsteroids()) {
+					brick.handleCollisions(a);
+				}
 				if(brick.isActive()) {
 					bricksActive = true;
 				}
