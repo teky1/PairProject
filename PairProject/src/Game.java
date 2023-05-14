@@ -54,8 +54,10 @@ public class Game {
 		ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
 		Asteroid a1 = new Asteroid(new Vector(100, 100), new Vector(Math.random()*100, 100), this);
 		Asteroid a2 = new Asteroid(new Vector(180, 250), new Vector(Math.random()*100, 100), this);
+		Asteroid a3 = new Asteroid(new Vector(300, 418), new Vector(Math.random()*100, 100), this);
 		asteroids.add(a1);
 		asteroids.add(a2);
+		asteroids.add(a3);
 		level.setAsteroids(asteroids);
 		
 	}

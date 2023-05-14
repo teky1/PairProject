@@ -13,17 +13,17 @@ public class Asteroid extends MovingGameObject {
 	
 	public void update(double timeDelta) {
 		
-//		if(testForAsteroidCollisions()) {
-//			setVelocity(getVelocity().add(game.getBall().getVelocity().multiply(0.5)));
-//			game.getBall().setVelocity(game.getBall().getVelocity().add(getVelocity().multiply(0.5)));
-//			setHealth(getHealth()-1);
-//		}
-		
 		if(testForAsteroidCollisions()) {
-			setVelocity(getVelocity().multiply(new Vector(-1, -1)));
+			setVelocity(getVelocity().multiply(new Vector(1, -1)));
 		}
 		
 		if(testForBallCollisions()) {
+			setVelocity(getVelocity().multiply(new Vector(1, -0.9)));
+			game.getBall().setVelocity(game.getBall().getVelocity().multiply(new Vector(1, -1)));
+			// preventing crashes for now
+			if(getHealth()!=1) {
+				setHealth(getHealth()-1);
+			}
 			
 		}
 		
