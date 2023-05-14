@@ -53,8 +53,9 @@ public class Ball extends MovingGameObject {
 			setVelocity(new Vector(getVelocity().getX(), Math.abs(getVelocity().getY())));
 		}
 		
-		if(getPos().getY() >= 550) {
-			setVelocity(new Vector(getVelocity().getX(), -Math.abs(getVelocity().getY())));
+		if(getPos().getY() >= 620) {
+//			setVelocity(new Vector(getVelocity().getX(), -Math.abs(getVelocity().getY())));
+			setActive(false);
 		}
 		
 	}

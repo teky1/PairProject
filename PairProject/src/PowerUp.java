@@ -7,7 +7,7 @@ public class PowerUp extends MovingGameObject {
 		super(pos, new Vector(0, 75));
 		game = g;
 		
-		setDim(12, 12);
+		setDim(16, 16);
 	}
 	
 	public void update(double timeDelta) {
@@ -36,7 +36,7 @@ public class PowerUp extends MovingGameObject {
 		boolean xOverlap = minXPlatform <= maxXClass && maxXPlatform >= minXClass;
 		boolean yOverlap = minYPlatform <= maxYClass && maxYPlatform >= minYClass;
 
-		if (xOverlap && yOverlap) {
+		if (xOverlap && yOverlap && isActive()) {
 			setActive(false);
 		    onCollect();
 		}

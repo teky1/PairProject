@@ -12,17 +12,23 @@ public class BallsPowerUp extends PowerUp {
 	}
 	
 	public void onCollect() {
-		for(int i = 0; i < 2; i++) {
-			Ball ball1 = new Ball(game);
-			Ball ball2 = new Ball(game);
-			ball1.start();
-			ball2.start();
-			
-			ArrayList<Ball> balls = game.getBalls();
-			balls.add(ball1);
-			balls.add(ball2);
-			game.setBalls(balls);
+		Ball ball1 = new Ball(game);
+		Ball ball2 = new Ball(game);
+		ball1.start();
+		ball2.start();
+		
+		ArrayList<Ball> balls = game.getBalls();
+		
+		for(Ball ball : balls) {
+			if(ball.isActive()) {
+				ball1.setPos(ball.getPos());
+				ball2.setPos(ball.getPos());
+			}
 		}
+		
+		balls.add(ball1);
+		balls.add(ball2);
+		game.setBalls(balls);
 	}
 	
 	
