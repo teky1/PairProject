@@ -32,6 +32,10 @@ public class Ball extends MovingGameObject {
 		
 	}
 	
+	public boolean getStartState() {
+		return startState;
+	}
+	
 	public void update(double timeDelta) {
 		
 		if(!isActive()) {

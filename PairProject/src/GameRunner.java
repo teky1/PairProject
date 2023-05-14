@@ -81,12 +81,12 @@ public class GameRunner implements ActionListener {
 		
 		
 		long currTime = System.currentTimeMillis()%1000000;
-    	double timeDelta = (double)(currTime - lastFrame)/1000.;
-    	
-    	boolean bricksActive = false;
-    	boolean ballsActive = false;
-    	
-    	ArrayList<Ball> balls = game.getBalls();
+    double timeDelta = (double)(currTime - lastFrame)/1000.;
+
+    boolean bricksActive = false;
+    boolean ballsActive = false;
+
+    ArrayList<Ball> balls = game.getBalls();
 		for(Ball ball : balls) {
 			platform.handleCollisions(ball);
 			ball.update(timeDelta);
@@ -103,7 +103,7 @@ public class GameRunner implements ActionListener {
 			}
 		}
     	
-    	ArrayList<PowerUp> powerups = game.getPowerups();
+    ArrayList<PowerUp> powerups = game.getPowerups();
 		for(PowerUp powerup : powerups) {
 			powerup.update(timeDelta);
 		}
@@ -121,10 +121,12 @@ public class GameRunner implements ActionListener {
 			System.out.println("lose");
 		}
     	
-		
-		
-
-    	lastFrame = currTime;
+	
+    game.getBall().update(timeDelta);
+    for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
+      game.getLevel().getAsteroids().get(i).update(timeDelta);
+    }
+    lastFrame = currTime;
 	}
 	
 	
