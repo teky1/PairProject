@@ -72,6 +72,10 @@ public class MainScreen extends JPanel {
 		
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				frame.dispose();
+//				GameRunner g = new GameRunner();
+//				g.setupGameloop();
+//				g.startGameloop();
 			}
 		});
 		frame.setVisible(true);
