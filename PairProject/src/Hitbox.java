@@ -88,14 +88,17 @@ public class Hitbox {
 		}		
 	}
 	
-	public boolean isColliding(Hitbox other) {
-		for(int i = 0; i < linesAmt(); i++) {
-			for(int j = 0; j < other.linesAmt(); j++) {
-				if(getLine(i).intersectsLine(other.getLine(j))) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+//	public boolean isColliding(Hitbox other) {
+//		for(int i = 0; i < linesAmt(); i++) {
+//			for(int j = 0; j < other.linesAmt(); j++) {
+//				if(getLine(i).intersectsLine(other.getLine(j))) {
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+	
+	public boolean
+	
 }
