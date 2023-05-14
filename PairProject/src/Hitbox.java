@@ -99,6 +99,6 @@ public class Hitbox {
 //		return false;
 //	}
 	
-	public boolean
+//	public boolean
 	
 }

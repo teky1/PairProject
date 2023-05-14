@@ -124,7 +124,6 @@ public class GamePanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		game.getBall().start();
-		
 	}
 
 }

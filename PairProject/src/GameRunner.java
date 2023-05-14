@@ -66,7 +66,9 @@ public class GameRunner implements ActionListener {
     	double timeDelta = (double)(currTime - lastFrame)/1000.;
     	
     	game.getBall().update(timeDelta);
-
+    	for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
+    		game.getLevel().getAsteroids().get(i).update(timeDelta);
+    	}
     	lastFrame = currTime;
 	}
 	

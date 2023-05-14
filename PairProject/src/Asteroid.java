@@ -7,40 +7,54 @@ public class Asteroid extends MovingGameObject {
 	Asteroid(Vector pos, Vector vel, Game g) {
 		super(pos, vel);
 		game = g;
-		setDim(20,20);
+		setDim(30,30);
 		setHealth(3);
-	}
-	
-	public void start() {
-//		System.out.print("true");
-		double angle = Math.random() * 2 * Math.PI/3 + Math.PI;
-		int magnitude = 250;
-		setVelocity((new Vector(Math.cos(angle), Math.sin(angle))).multiply(magnitude));
 	}
 	
 	public void update(double timeDelta) {
 		
-		if(testForCollisions()) {
-			setVelocity(getVelocity().add(game.getBall().getVelocity().multiply(0.5)));
-			game.getBall().setVelocity(game.getBall().getVelocity().add(getVelocity().multiply(0.5)));
-			setHealth(getHealth()-1);
+//		if(testForAsteroidCollisions()) {
+//			setVelocity(getVelocity().add(game.getBall().getVelocity().multiply(0.5)));
+//			game.getBall().setVelocity(game.getBall().getVelocity().add(getVelocity().multiply(0.5)));
+//			setHealth(getHealth()-1);
+//		}
+		
+		if(testForAsteroidCollisions()) {
+			setVelocity(getVelocity().multiply(new Vector(-1, -1)));
+		}
+		
+		if(testForBallCollisions()) {
+			
 		}
 		
 		setPos(getPos().add(getVelocity().multiply(timeDelta)));
 		
-		if(getPos().getX() <= 13*3 || getPos().getX() >= 185*3) {
+		if(getPos().getX() <= (13*3+15) || getPos().getX() >= (185*3-15)) {
 			this.setVelocity(getVelocity().multiply(new Vector(-1, 1)));
 		}
 		
-		if(getPos().getY() <= 13*3 || getPos().getY() >= 500) {
+		if(getPos().getY() <= (13*3+15) || getPos().getY() >= 485) {
 			this.setVelocity(getVelocity().multiply(new Vector(1, -1)));
 		}
 		
 	}
 	
+	public boolean testForBallCollisions() {
+		return (Math.abs(getPos().getX()-game.getBall().getPos().getX())<=20 &&
+				Math.abs(getPos().getY()-game.getBall().getPos().getY())<=20);
+	}
 	
-	public boolean testForCollisions() {
-		return (getPos().getX()-game.getBall().getPos().getX()<=30 || getPos().getY()-game.getBall().getPos().getY()<=30);
+	public boolean testForAsteroidCollisions() {
+		for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
+			if(game.getLevel().getAsteroids().get(i)!=this) {
+				if(Math.abs(getPos().getX()-game.getLevel().getAsteroids().get(i).getPos().getX())<=30 &&
+				   Math.abs(getPos().getY()-game.getLevel().getAsteroids().get(i).getPos().getY())<=30) {
+					return true;
+				}
+			}
+			
+		}
+		return false;
 	}
 	
 	public int getHealth() {
