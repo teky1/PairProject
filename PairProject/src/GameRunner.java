@@ -11,6 +11,8 @@ public class GameRunner implements ActionListener {
 	private MainScreen menu;
 	private Timer timer;
 	private boolean started;
+	private int currentLevel;
+	private int maxLevel;
 	
 	private long lastFrame;
 	private long timeStarted;
@@ -19,13 +21,24 @@ public class GameRunner implements ActionListener {
 	public GameRunner() {
 		game = new Game();
 		gamePanel = new GamePanel(game, this);
-//		menu = new MainScreen();
+		menu = new MainScreen(this);
 		
+		maxLevel = 3;
 		started = false;	
 	}
 	
 	public boolean getStarted() {
 		return started;
+	}
+	
+	public void start(boolean isRandom) {
+		if(isRandom) {
+			currentLevel = 0;
+		} else {
+			currentLevel = 1;
+		}
+		setupGameloop();
+		startGameloop();
 	}
 	
 	public void startGameloop() {
@@ -70,12 +83,23 @@ public class GameRunner implements ActionListener {
 		long currTime = System.currentTimeMillis()%1000000;
     	double timeDelta = (double)(currTime - lastFrame)/1000.;
     	
+    	boolean bricksActive = false;
+    	boolean ballsActive = false;
+    	
     	ArrayList<Ball> balls = game.getBalls();
 		for(Ball ball : balls) {
 			platform.handleCollisions(ball);
 			ball.update(timeDelta);
+			
+			if(ball.isActive()) {
+				ballsActive = true;
+			}
+			
 			for(Brick brick : game.getLevel().getBricks()) {
 				brick.handleCollisions(ball);
+				if(brick.isActive()) {
+					bricksActive = true;
+				}
 			}
 		}
     	
@@ -83,8 +107,22 @@ public class GameRunner implements ActionListener {
 		for(PowerUp powerup : powerups) {
 			powerup.update(timeDelta);
 		}
-
+		
+		if(!bricksActive) {
+			game.reset();
+			if(currentLevel > 0 && currentLevel < maxLevel) {
+				currentLevel++;
+				game.loadLevel(currentLevel);
+			} else if (currentLevel == 0) {
+				game.loadLevel(0);
+			}
+		}
+		if(!ballsActive) {
+			System.out.println("lose");
+		}
     	
+		
+		
 
     	lastFrame = currTime;
 	}
@@ -93,8 +131,8 @@ public class GameRunner implements ActionListener {
 	
 	public static void main(String[] args) {
 		GameRunner game = new GameRunner();
-		game.setupGameloop();
-		game.startGameloop();
+//		game.setupGameloop();
+//		game.startGameloop();
 	}
 
 }

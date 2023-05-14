@@ -12,8 +12,10 @@ public class MainScreen extends JPanel {
 	JLabel title, logo;
 	JButton tutorial, playButton, randomButton;
 	Image backgroundImage;
+	GameRunner gameRunner;
 	
-	public MainScreen() {
+	public MainScreen(GameRunner gr) {
+		gameRunner = gr;
 		try {
 			backgroundImage = ImageIO.read(getClass().getClassLoader().
 					getResource("title-screen.png")).getScaledInstance(600, 600, 0);
@@ -72,15 +74,26 @@ public class MainScreen extends JPanel {
 		
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+//				System.out.println("play");
+				gameRunner.start(false);
+				frame.setVisible(false);
 			}
 		});
 		frame.setVisible(true);
 		randomButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				gameRunner.start(true);
+				frame.setVisible(false);
+				
 			}
 		});
 		tutorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("tutorial");
+				
 			}
 		});
 		
@@ -93,7 +106,4 @@ public class MainScreen extends JPanel {
 
 	    g.drawImage(backgroundImage, 0, 0, this);
 	  }
-	public static void main(String[] args) {
-		new MainScreen();
-	}
 }

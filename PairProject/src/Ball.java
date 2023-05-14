@@ -21,6 +21,9 @@ public class Ball extends MovingGameObject {
 	}
 	
 	public void start() {
+		if(!startState) {
+			return;
+		}
 		startState = false;
 		
 		double angle = Math.random() * 2 * Math.PI/3 + 7*Math.PI/6;
@@ -30,6 +33,10 @@ public class Ball extends MovingGameObject {
 	}
 	
 	public void update(double timeDelta) {
+		
+		if(!isActive()) {
+			return;
+		}
 		
 		if(startState) {
 			setPos(game.getPlatform().getPos().add(new Vector(0, -getDimX()/2 - game.getPlatform().getDimY()/2)));
