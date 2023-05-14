@@ -31,6 +31,7 @@ public class MainScreen extends JPanel {
 		
 		this.frame = new JFrame("Mainscreen");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		panel.setPreferredSize(new Dimension(600, 600));
 		panel.setLayout(null);
 		
@@ -52,6 +53,12 @@ public class MainScreen extends JPanel {
 		playButton.setBounds(150, 300, buttonLength, buttonHeight);
 		randomButton.setBounds(150, 375, buttonLength, buttonHeight);
 		tutorial.setBounds(150, 450, buttonLength, buttonHeight);
+		playButton.setOpaque(false);
+		playButton.setBorderPainted(false);
+		randomButton.setOpaque(false);
+		randomButton.setBorderPainted(false);
+		tutorial.setOpaque(false);
+		tutorial.setBorderPainted(false);
 		
 		panel.add(playButton);
 		panel.add(randomButton);
