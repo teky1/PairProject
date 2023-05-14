@@ -9,11 +9,14 @@ public class Level {
 	
 	private ArrayList<Asteroid> asteroidList;
 	private ArrayList<Brick> brickList;
+	private ArrayList<Integer> healthPoints;
 	
-	Level(/*File locations*/) /*throws FileNotFoundException*/ {
-		asteroidList = new ArrayList<Asteroid>();
-		brickList = new ArrayList<Brick>();
-		
+	Level(ArrayList<Asteroid> asteroids, ArrayList<Brick> bricks) {
+		asteroidList = asteroids;
+		brickList = bricks;
+		if(asteroidList==null) {
+			
+		}
 		
 		
 		/*
@@ -35,7 +38,7 @@ public class Level {
 		
 		
 	}
-	
+
 	public ArrayList<Asteroid> getAsteroids() {
 		return (ArrayList<Asteroid>) asteroidList.clone();
 	}
@@ -52,11 +55,27 @@ public class Level {
 		brickList = (ArrayList<Brick>) bricks.clone();
 	}
 	
-	public static Level load(int levelCode) {
+	public static Level load(int levelCode) throws FileNotFoundException {
 		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL
 		// THIS IS TEST CODE IM LEAVING HERE FOR NOW -Joel
 		
-		return new Level();
+		ArrayList<Asteroid> a = new ArrayList<Asteroid>();
+		ArrayList<Brick> b = new ArrayList<Brick>();
+		
+		if(levelCode==1) {
+			Vector position;
+			Vector velocity;
+			int x=0, y=0;
+			for(int i=0; i<15; i++) {
+				position = new Vector(x, y);
+				velocity = new Vector(75, 75);
+//				b.add(new Brick(position, velocity));
+				x+=40;
+				y+=20;
+			}
+		}
+		
+		return new Level(null, null);
 		
 		
 	}
