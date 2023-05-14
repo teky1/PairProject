@@ -69,7 +69,7 @@ public class MainScreen extends JPanel {
 		
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+			} 
 		});
 		frame.setVisible(true);
 		randomButton.addActionListener(new ActionListener() {
