@@ -11,8 +11,9 @@ public class Game {
 	private Image backgroundImg;
 	
 	Game() {
-//		this.ball = new Ball();
-		this.platform = new Platform();
+		
+		this.ball = new Ball(this);
+		this.platform = new Platform(this);
 		
 		try {
 		    backgroundImg = ImageIO.read(getClass().getClassLoader().getResource("background.png")).

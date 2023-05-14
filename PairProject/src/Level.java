@@ -40,7 +40,7 @@ public class Level {
 		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL
 		// THIS IS TEST CODE IM LEAVING HERE FOR NOW -Joel
 		
-		
+		return new Level();
 		
 		
 	}

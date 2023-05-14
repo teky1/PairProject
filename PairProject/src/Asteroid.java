@@ -4,8 +4,8 @@ public class Asteroid extends MovingGameObject {
 	private int health;
 	
 	
-	Asteroid(int posX, int posY, int velX, int velY) {
-		super(posX, posY, velX, velY);
+	Asteroid(Vector pos, Vector vel) {
+		super(pos, vel);
 		
 		setDim(20,20);
 		setHealth(3);

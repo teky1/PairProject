@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements MouseListener {
 	
 	// Represent the respective instances of game and game runner
 	private Game game;
@@ -28,6 +28,8 @@ public class GamePanel extends JPanel {
 		this.gameRunner = gameRunner;
 		this.width = 600;
 		this.height = 600;
+		
+		addMouseListener(this);
 	}
 	
 	public int getDimX() {
@@ -55,11 +57,11 @@ public class GamePanel extends JPanel {
 	}
 	
 	public static void startFrame(GamePanel gamePanel) {
-		JFrame.setDefaultLookAndFeelDecorated(true);
+		JFrame.setDefaultLookAndFeelDecorated(false);
 		gamePanel.setSize(new Dimension(gamePanel.width, gamePanel.height));
 		gamePanel.setPreferredSize(new Dimension(gamePanel.getDimX(), gamePanel.getDimY()));
 		
-		JFrame graphFrame = new JFrame("Brick Breaker!");
+		JFrame graphFrame = new JFrame("Astro Breaker");
 		graphFrame.setResizable(false);
 		graphFrame.setSize(new Dimension(gamePanel.getDimX()+11, gamePanel.getDimY()+11));
 		graphFrame.setPreferredSize(new Dimension(gamePanel.getDimX()+11, gamePanel.getDimY()+11));
@@ -69,12 +71,51 @@ public class GamePanel extends JPanel {
 		graphFrame.setDefaultCloseOperation(graphFrame.EXIT_ON_CLOSE);
 	}
 	
+	private void renderGameObject(GameObject obj, Graphics2D g) {
+		g.drawImage(obj.getSprite(), obj.getTopLeftPos().getIntX(), obj.getTopLeftPos().getIntY(), null);
+	}
+	
 	public void paintComponent(Graphics graphics) {
 		
 		super.paintComponent(graphics);
 		Graphics2D g = (Graphics2D) graphics;
 		
 		g.drawImage(game.getBackgroundImg(), 0, 0, null);
+		
+		Platform platform = game.getPlatform();
+		renderGameObject(platform, g);
+		
+		Ball ball = game.getBall();
+		renderGameObject(ball, g);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		game.getBall().start();
 		
 	}
 

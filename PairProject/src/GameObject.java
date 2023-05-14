@@ -11,8 +11,7 @@ public class GameObject {
 	
 	
 	// Position of center of game object
-	private double posX;
-	private double posY;
+	Vector pos;
 	
 	// Intended dimensions of GameObject when rendered
 	private int dimX;
@@ -20,11 +19,28 @@ public class GameObject {
 	
 	// Spryte
 	private Image sprite;
+	private String spriteLocation;
 	
 	// Initializes position of gameobj
-	GameObject(int posX, int posY) {
-		this.posX = posX;
-		this.posY = posY;
+	GameObject(Vector pos) {
+		this.pos = pos.copy();
+		
+		spriteLocation = "";
+	}
+	
+	public Vector getTopLeftPos() {
+		return new Vector(
+					getPos().getX()-getDimX()/2,
+					getPos().getY()-getDimY()/2
+				);
+	}
+	
+	public Vector getPos() {
+		return pos.copy();
+	}
+	
+	public void setPos(Vector newPos) {
+		pos = newPos;
 	}
 	
 	public int getDimX() {
@@ -38,6 +54,10 @@ public class GameObject {
 	public void setDim(int x, int y) {
 		this.dimX = x;
 		this.dimY = y;
+		
+		if(!spriteLocation.equals("")) {
+			setSprite(spriteLocation);
+		}
 	}
 	
 	// returns sprite
@@ -48,8 +68,9 @@ public class GameObject {
 	// changes sprite
 	public void setSprite(String newSprite) {
 		try {
-		    Image sprite = ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
+		    sprite = ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
 					getScaledInstance(getDimX(), getDimY(), 0);
+		    spriteLocation = newSprite;
 		} catch (IOException e) {
 			System.out.println("Certain sprites not found.");
 			e.printStackTrace();

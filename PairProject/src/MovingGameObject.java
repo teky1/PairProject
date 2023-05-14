@@ -1,30 +1,20 @@
 
 public class MovingGameObject extends GameObject {
 	
-	private int velocityX;
-	private int velocityY;
+	private Vector velocity;
 	
-	MovingGameObject(int x, int y, int vx, int vy) {
-		super(x, y);
+	MovingGameObject(Vector pos, Vector vel) {
+		super(pos);
 		
-		velocityX = vx;
-		velocityY = vy;
+		velocity = vel.copy();
 	}
 	
-	public int getVelX() {
-		return velocityX;
+	public Vector getVelocity() {
+		return velocity.copy();
 	}
 	
-	public int getVelY() {
-		return velocityY;
+	public void setVelocity(Vector newVelocity) {
+		velocity = newVelocity;
 	}
-	
-	public void setVelX(int newVx) {
-		velocityX = newVx;
-	}
-	
-	public void setVelY(int newVy) {
-		velocityY = newVy;
-	} 
 
 }
