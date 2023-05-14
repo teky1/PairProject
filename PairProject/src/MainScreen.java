@@ -1,43 +1,66 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class MainScreen extends JPanel {
 	JFrame frame;
 	JPanel panel;
 	JLabel title, logo;
-	JButton Tutorial, storyButton, randomButton;
+	JButton tutorial, playButton, randomButton;
+	Image backgroundImage;
 	
-	public MainScreen(JPanel panel) {
-		this.frame = new JFrame("Main Screen");
-		this.panel = panel;
-		panel.setLayout(null);
+	public MainScreen() {
+		try {
+			backgroundImage = ImageIO.read(getClass().getClassLoader().
+					getResource("title-screen.png")).getScaledInstance(600, 600, 0);
+		} catch (IOException e) {
+			System.out.println("Background image not found.");
+			e.printStackTrace();
+		}
+		
+		panel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(backgroundImage, 0, 0, null);
+			}
+		};
+		
+		this.frame = new JFrame("Mainscreen");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setPreferredSize(new Dimension(600, 600));
-		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		frame.setContentPane(panel);
-		frame.pack();
-		Tutorial = new JButton("Tutorial");
-		storyButton = new JButton("Story");
-		randomButton = new JButton("Random");
-//		Tutorial = new JButton(new ImageIcon(""));
-//		storyButton = new JButton(new ImageIcon(""));
-//		randomButton = new JButton(new ImageIcon(""));
-		Tutorial.setBounds(10,10,110,60);
-		storyButton.setBounds(130,10,110,60);
-		randomButton.setBounds(250,10,110,60);
-		panel.add(Tutorial);
-		panel.add(storyButton);
+		panel.setLayout(null);
+		
+		int buttonLength = 3*99;
+		int buttonHeight = 3*17;
+		Image tutorialImg = new ImageIcon(getClass().getClassLoader().
+				getResource("tutorial-button.png")).getImage().
+				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+		Image playImg = new ImageIcon(getClass().getClassLoader().
+				getResource("play-button.png")).getImage().
+				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+		Image randomImg = new ImageIcon(getClass().getClassLoader().
+				getResource("random-button.png")).getImage().
+				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+		tutorial = new JButton(new ImageIcon(tutorialImg));
+		playButton = new JButton(new ImageIcon(playImg));
+		randomButton = new JButton(new ImageIcon(randomImg));
+
+		playButton.setBounds(150, 300, buttonLength, buttonHeight);
+		randomButton.setBounds(150, 375, buttonLength, buttonHeight);
+		tutorial.setBounds(150, 450, buttonLength, buttonHeight);
+		
+		panel.add(playButton);
 		panel.add(randomButton);
-		Tutorial.setVisible(true);
-		storyButton.setVisible(true);
+		panel.add(tutorial);
+		tutorial.setVisible(true);
+		playButton.setVisible(true);
 		randomButton.setVisible(true);
 		
-		Tutorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		storyButton.addActionListener(new ActionListener() {
+		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -46,6 +69,21 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		tutorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		frame.setContentPane(panel);
+		frame.pack();
 		frame.setVisible(true);
+	}
+	public void paintComponent(Graphics g) {
+	    super.paintComponent(g);
+
+	    g.drawImage(backgroundImage, 0, 0, this);
+	  }
+	public static void main(String[] args) {
+		new MainScreen();
 	}
 }
