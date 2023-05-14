@@ -122,7 +122,7 @@ public class GameRunner implements ActionListener {
 		}
     	
 	
-    game.getBall().update(timeDelta);
+//    game.getBall().update(timeDelta);
     for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
       game.getLevel().getAsteroids().get(i).update(timeDelta);
     }
