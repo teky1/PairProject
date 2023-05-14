@@ -88,8 +88,12 @@ public class GamePanel extends JPanel implements MouseListener {
 		Ball ball = game.getBall();
 		renderGameObject(ball, g);
 		
-		for(Brick brick : game.getLevel().getBricks()) {
-			renderGameObject(brick, g);
+//		for(Brick brick : game.getLevel().getBricks()) {
+//			renderGameObject(brick, g);
+//		}
+		
+		for(Asteroid asteroid : game.getLevel().getAsteroids()) {
+			renderGameObject(asteroid, g);
 		}
 	}
 

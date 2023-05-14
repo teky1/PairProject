@@ -12,6 +12,7 @@ public class Asteroid extends MovingGameObject {
 	}
 	
 	public void start() {
+//		System.out.print("true");
 		double angle = Math.random() * 2 * Math.PI/3 + Math.PI;
 		int magnitude = 250;
 		setVelocity((new Vector(Math.cos(angle), Math.sin(angle))).multiply(magnitude));
@@ -22,6 +23,7 @@ public class Asteroid extends MovingGameObject {
 		if(testForCollisions()) {
 			setVelocity(getVelocity().add(game.getBall().getVelocity().multiply(0.5)));
 			game.getBall().setVelocity(game.getBall().getVelocity().add(getVelocity().multiply(0.5)));
+			setHealth(getHealth()-1);
 		}
 		
 		setPos(getPos().add(getVelocity().multiply(timeDelta)));
