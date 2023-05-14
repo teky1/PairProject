@@ -57,8 +57,10 @@ public class MainScreen extends JPanel {
 		playButton.setContentAreaFilled(false);
 		playButton.setBorderPainted(false);
 		randomButton.setOpaque(false);
+		randomButton.setContentAreaFilled(false);
 		randomButton.setBorderPainted(false);
 		tutorial.setOpaque(false);
+		tutorial.setContentAreaFilled(false);
 		tutorial.setBorderPainted(false);
 		
 		panel.add(playButton);
