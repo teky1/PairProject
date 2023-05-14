@@ -36,6 +36,22 @@ public class Level {
 		
 	}
 	
+	public ArrayList<Asteroid> getAsteroids() {
+		return (ArrayList<Asteroid>) asteroidList.clone();
+	}
+	
+	public void setAsteroids(ArrayList<Asteroid> asteroids) {
+		asteroidList = (ArrayList<Asteroid>) asteroids.clone();
+	}
+	
+	public ArrayList<Brick> getBricks() {
+		return (ArrayList<Brick>) brickList.clone();
+	}
+	
+	public void setBricks(ArrayList<Brick> bricks) {
+		brickList = (ArrayList<Brick>) bricks.clone();
+	}
+	
 	public static Level load(int levelCode) {
 		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL
 		// THIS IS TEST CODE IM LEAVING HERE FOR NOW -Joel

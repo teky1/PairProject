@@ -13,10 +13,12 @@ public class Brick extends GameObject {
 	Brick() {
 		super(new Vector());
 		
-		hitbox = new Hitbox()
-		
-		setDim(30, 15);
+		setDim(32, 16);
 		setSprite("brick"+((int)(Math.random()*5))+".png");
+		
+	}
+	
+	public void handleCollisions(MovingGameObject obj) {
 		
 	}
 	
@@ -26,7 +28,7 @@ public class Brick extends GameObject {
 		}
 		
 		try {
-		    return ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
+		    return ImageIO.read(getClass().getClassLoader().getResource("crack"+(3-health)+".png")).
 					getScaledInstance(getDimX(), getDimY(), 0);
 		} catch (IOException e) {
 			System.out.println("Certain sprites not found.");

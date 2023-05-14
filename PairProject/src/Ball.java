@@ -24,7 +24,7 @@ public class Ball extends MovingGameObject {
 		startState = false;
 		
 		double angle = Math.random() * 2 * Math.PI/3 + 7*Math.PI/6;
-		int magnitude = 400;
+		int magnitude = 250;
 		setVelocity((new Vector(Math.cos(angle), Math.sin(angle))).multiply(magnitude));
 		
 	}
@@ -42,17 +42,17 @@ public class Ball extends MovingGameObject {
 		// wall collisions
 		if(getPos().getX() <= 13*3) {
 			setVelocity(getVelocity().multiply(new Vector(-1, 1)));
-//			setPos(getPos().add(new Vector(-2*(getPos().getX()-13*3), 0)));
+			setPos(getPos().add(new Vector(-2*(getPos().getX()-13*3), 0)));
 		}
 		
 		if(getPos().getX() >= 185*3) {
 			setVelocity(getVelocity().multiply(new Vector(-1, 1)));
-//			setPos(getPos().add(new Vector(-2*(getPos().getX()-185*3), 0)));
+			setPos(getPos().add(new Vector(-2*(getPos().getX()-185*3), 0)));
 		}
 		
 		if(getPos().getY() <= 13*3) {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
-//			setPos(getPos().add(new Vector(0, -2*(getPos().getY()-13*3))));
+			setPos(getPos().add(new Vector(0, -2*(getPos().getY()-13*3))));
 		}
 		
 		if(getPos().getY() >= 550) {
