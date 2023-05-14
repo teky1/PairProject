@@ -54,6 +54,7 @@ public class MainScreen extends JPanel {
 		randomButton.setBounds(150, 375, buttonLength, buttonHeight);
 		tutorial.setBounds(150, 450, buttonLength, buttonHeight);
 		playButton.setOpaque(false);
+		playButton.setContentAreaFilled(false);
 		playButton.setBorderPainted(false);
 		randomButton.setOpaque(false);
 		randomButton.setBorderPainted(false);
@@ -69,7 +70,7 @@ public class MainScreen extends JPanel {
 		
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			} 
+			}
 		});
 		frame.setVisible(true);
 		randomButton.addActionListener(new ActionListener() {
