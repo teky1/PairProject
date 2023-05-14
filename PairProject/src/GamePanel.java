@@ -5,12 +5,14 @@ import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements MouseListener {
 	
@@ -71,8 +73,8 @@ public class GamePanel extends JPanel implements MouseListener {
 		graphFrame.setDefaultCloseOperation(graphFrame.EXIT_ON_CLOSE);
 	}
 	
-	private void renderGameObject(GameObject obj, Graphics2D g) {
-		g.drawImage(obj.getSprite(), obj.getTopLeftPos().getIntX(), obj.getTopLeftPos().getIntY(), null);
+	private void renderGameObject(GameObject obj, Image sprite, Graphics2D g) {
+		g.drawImage(sprite, obj.getTopLeftPos().getIntX(), obj.getTopLeftPos().getIntY(), null);
 	}
 	
 	public void paintComponent(Graphics graphics) {
@@ -83,14 +85,25 @@ public class GamePanel extends JPanel implements MouseListener {
 		g.drawImage(game.getBackgroundImg(), 0, 0, null);
 		
 		Platform platform = game.getPlatform();
-		renderGameObject(platform, g);
+		renderGameObject(platform, platform.getSprite(), g);
 		
-		Ball ball = game.getBall();
-		renderGameObject(ball, g);
 		
-//		for(Brick brick : game.getLevel().getBricks()) {
-//			renderGameObject(brick, g);
-//		}
+		
+		
+		ArrayList<Ball> balls = game.getBalls();
+		for(Ball ball : balls) {
+			renderGameObject(ball, ball.getSprite(), g);
+		}
+    	
+    	ArrayList<PowerUp> powerups = game.getPowerups();
+		for(PowerUp powerup : powerups) {
+			renderGameObject(powerup, powerup.getSprite(), g);
+		}
+
+		for(Brick brick : game.getLevel().getBricks()) {
+			renderGameObject(brick, brick.getSprite(), g);
+			renderGameObject(brick, brick.getDamageOverlay(), g);
+    }
 		
 		for(Asteroid asteroid : game.getLevel().getAsteroids()) {
 			renderGameObject(asteroid, g);
@@ -123,7 +136,11 @@ public class GamePanel extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		game.getBall().start();
+		ArrayList<Ball> balls = game.getBalls();
+		for(Ball ball : balls) {
+			ball.start();
+		}
+		
 	}
 
 }

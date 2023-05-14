@@ -6,16 +6,18 @@ import javax.imageio.ImageIO;
 
 public class Game {
 	
-	private Ball ball;
+	private ArrayList<Ball> balls;
+	private ArrayList<PowerUp> powerups;
 	private Platform platform;
 	private Level level;
 	private Image backgroundImg;
+	private int lives;
 	
 	Game() {
 		
-		this.ball = new Ball(this);
-		this.platform = new Platform(this);
-		this.level = new Level();
+		reset();
+		
+		this.lives = 5;
 		
 		try {
 		    backgroundImg = ImageIO.read(getClass().getClassLoader().getResource("background.png")).
@@ -24,6 +26,24 @@ public class Game {
 			System.out.println("backgroudn sprites not found.");
 			e.printStackTrace();
 		}
+	}
+	
+	public void reset() {
+		this.balls = new ArrayList<Ball>();
+		this.balls.add(new Ball(this));
+		
+		this.powerups = new ArrayList<PowerUp>();
+		
+		this.platform = new Platform(this);
+		this.level = new Level();
+	}
+	
+	public int getLives() {
+		return lives;
+	}
+	
+	public void setLives(int lives) {
+		this.lives = lives;
 	}
 	
 	public Image getBackgroundImg() {
@@ -51,6 +71,16 @@ public class Game {
 //		level.setBricks(bricks);
 		
 		level = new Level();
+		ArrayList<Brick> bricks = new ArrayList<Brick>();
+		
+		
+		for(int i = 0; i < 20; i++) {
+			Brick b = new Brick(this);
+			b.setPos(new Vector(3*Math.random()*150+60, 3*Math.random()*120+60));
+			bricks.add(b);
+		}
+		
+		level.setBricks(bricks);
 		ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
 		Asteroid a1 = new Asteroid(new Vector(100, 100), new Vector(Math.random()*200, 200), this);
 		Asteroid a2 = new Asteroid(new Vector(180, 250), new Vector(Math.random()*200, 200), this);
@@ -62,8 +92,24 @@ public class Game {
 		
 	}
 	
-	public Ball getBall() {
-		return ball;
+	public ArrayList<Ball> getBalls() {
+		return (ArrayList<Ball>) balls.clone();
+	}
+	
+	public void setBalls(ArrayList<Ball> newBalls) {
+		balls = (ArrayList<Ball>) newBalls.clone();
+	}
+	
+	public ArrayList<PowerUp> getPowerups() {
+		return (ArrayList<PowerUp>) powerups.clone();
+	}
+	
+	public void setPowerups(ArrayList<PowerUp> newPowerups) {
+		powerups = (ArrayList<PowerUp>) newPowerups.clone();
+	}
+	
+	public void spawnPowerup(Vector pos) {
+		powerups.add(new BallsPowerUp(pos, this));
 	}
 	
 	public Platform getPlatform() {
