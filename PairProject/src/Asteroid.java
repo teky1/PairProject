@@ -29,4 +29,4 @@ public class Asteroid extends MovingGameObject {
 		setSprite("asteroid"+newHealth+".png");
 	}
 	
-	
+}

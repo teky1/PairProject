@@ -38,6 +38,11 @@ public class Level {
 		
 		
 	}
+	
+	Level() {
+		asteroidList = new ArrayList<Asteroid>();
+		brickList = new ArrayList<Brick>();
+	}
 
 	public ArrayList<Asteroid> getAsteroids() {
 		return (ArrayList<Asteroid>) asteroidList.clone();

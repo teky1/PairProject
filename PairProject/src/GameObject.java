@@ -21,11 +21,14 @@ public class GameObject {
 	private Image sprite;
 	private String spriteLocation;
 	
+	private boolean active;
+	
 	// Initializes position of gameobj
 	GameObject(Vector pos) {
 		this.pos = pos.copy();
 		
 		spriteLocation = "";
+		active = true;
 	}
 	
 	public Vector getTopLeftPos() {
@@ -51,6 +54,14 @@ public class GameObject {
 		return dimY;
 	}
 	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void setActive(boolean b) {
+		active = b;
+	}
+	
 	public void setDim(int x, int y) {
 		this.dimX = x;
 		this.dimY = y;
@@ -62,11 +73,19 @@ public class GameObject {
 	
 	// returns sprite
 	public Image getSprite() {
+		if(!active) {
+			return null;
+		}
 		return sprite;
 	}
 	
 	// changes sprite
 	public void setSprite(String newSprite) {
+		if(newSprite == null) {
+			sprite = null;
+			spriteLocation = "";
+			return;
+		}
 		try {
 		    sprite = ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
 					getScaledInstance(getDimX(), getDimY(), 0);

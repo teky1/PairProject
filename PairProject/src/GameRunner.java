@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -62,10 +63,28 @@ public class GameRunner implements ActionListener {
 		Platform platform = game.getPlatform();
 		platform.setPos(new Vector(mousePos.getX(), platform.getPos().getY()));
 		
+		
+		
+		
+		
 		long currTime = System.currentTimeMillis()%1000000;
     	double timeDelta = (double)(currTime - lastFrame)/1000.;
     	
-    	game.getBall().update(timeDelta);
+    	ArrayList<Ball> balls = game.getBalls();
+		for(Ball ball : balls) {
+			platform.handleCollisions(ball);
+			ball.update(timeDelta);
+			for(Brick brick : game.getLevel().getBricks()) {
+				brick.handleCollisions(ball);
+			}
+		}
+    	
+    	ArrayList<PowerUp> powerups = game.getPowerups();
+		for(PowerUp powerup : powerups) {
+			powerup.update(timeDelta);
+		}
+
+    	
 
     	lastFrame = currTime;
 	}
