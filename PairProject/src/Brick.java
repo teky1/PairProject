@@ -76,7 +76,7 @@ public class Brick extends GameObject {
 			damageOverlay = null;
 			setActive(false);
 			
-			if(Math.random()<=1) {
+			if(Math.random()<=.5) {
 				game.spawnPowerup(getPos());
 			}
 			

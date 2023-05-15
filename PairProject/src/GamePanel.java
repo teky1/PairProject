@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements MouseListener {
 	// Represent the respective instances of game and game runner
 	private Game game;
 	private GameRunner gameRunner;
+	private JFrame parentFrame;
 	
 	// 
 	private int width;
@@ -32,6 +33,14 @@ public class GamePanel extends JPanel implements MouseListener {
 		this.height = 600;
 		
 		addMouseListener(this);
+	}
+	
+	public void setParentFrame(JFrame frame) {
+		parentFrame = frame;
+	}
+	
+	public void close() {
+		parentFrame.setVisible(false);
 	}
 	
 	public int getDimX() {
