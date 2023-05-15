@@ -17,9 +17,20 @@ public class Asteroid extends MovingGameObject {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
 		}
 		
-		if(testForBallCollisions()!=null) {
+		if(testForBallCollisions()!=null && !testForBallCollisions().getStartState()) {
+//			Ball b = testForBallCollisions();
+//			if(getVelocity().getX() > getVelocity().getY()) {
+//				setVelocity(getVelocity().multiply(new Vector(-1, 1)));
+//				b.setVelocity(b.getVelocity().multiply(new Vector(-1, 1)));
+//			} else {
+//				setVelocity(getVelocity().multiply(new Vector(1, -1)));
+//				b.setVelocity(b.getVelocity().multiply(new Vector(1, -1)));
+//			}
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
+//			Ball b = testForBallCollisions();
+//			Vector change = new Vector(b.getVelocity().getX(), Math.abs(b.getVelocity().getY()));
 			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
+//			b.setVelocity(change);
 			setHealth(getHealth()-1);
 		}
 		
