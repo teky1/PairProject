@@ -22,7 +22,8 @@ public class Asteroid extends MovingGameObject {
 //			setVelocity(new Vector(-1*Math.abs(getVelocity().getX()), getVelocity().getY()));
 //		}
 		
-		if(testForBallCollisions()!=null && !testForBallCollisions().getStartState()) {
+		if(testForBallCollisions()!=null && 
+				!testForBallCollisions().getStartState()) {
 //			Ball b = testForBallCollisions();
 //			if(getVelocity().getX() > getVelocity().getY()) {
 //				setVelocity(getVelocity().multiply(new Vector(-1, 1)));
@@ -31,9 +32,11 @@ public class Asteroid extends MovingGameObject {
 //				setVelocity(getVelocity().multiply(new Vector(1, -1)));
 //				b.setVelocity(b.getVelocity().multiply(new Vector(1, -1)));
 //			}
-			setVelocity(getVelocity().multiply(new Vector(1, -1)));
+			setVelocity(getVelocity().multiply(
+					new Vector(1, -1)));
 			Ball b = testForBallCollisions();
-			Vector change = new Vector(b.getVelocity().getX(), -1*Math.abs(b.getVelocity().getY()));
+			Vector change = new Vector(b.getVelocity().getX(), 
+					-1*Math.abs(b.getVelocity().getY()));
 //			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
 			b.setVelocity(change);
 			setHealth(getHealth()-1);
@@ -46,11 +49,13 @@ public class Asteroid extends MovingGameObject {
 //		}
 		
 		if(getPos().getX() <= (13*3+15)) {
-			this.setVelocity(new Vector(Math.abs(getVelocity().getX()), getVelocity().getY()));
+			this.setVelocity(new Vector(Math.abs(
+					getVelocity().getX()), getVelocity().getY()));
 		}
 		
 		if(getPos().getX() >= (185*3-15)) {
-			this.setVelocity(new Vector(-1*Math.abs(getVelocity().getX()), getVelocity().getY()));
+			this.setVelocity(new Vector(-1*Math.abs(
+					getVelocity().getX()), getVelocity().getY()));
 		}
 		
 //		if(getPos().getY() <= (13*3+15) || getPos().getY() >= 485) {
@@ -58,11 +63,13 @@ public class Asteroid extends MovingGameObject {
 //		}
 		
 		if(getPos().getY() <= (13*3+15)) {
-			this.setVelocity(new Vector(getVelocity().getX(), Math.abs(getVelocity().getY())));
+			this.setVelocity(new Vector(getVelocity().getX(), 
+					Math.abs(getVelocity().getY())));
 		}
 		
 		if(getPos().getY() >= 485) {
-			this.setVelocity(new Vector(getVelocity().getX(), -1*Math.abs(getVelocity().getY())));
+			this.setVelocity(new Vector(getVelocity().getX(), 
+					-1*Math.abs(getVelocity().getY())));
 		}
 		
 	}

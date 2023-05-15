@@ -43,7 +43,8 @@ public class Ball extends MovingGameObject {
 		}
 		
 		if(startState) {
-			setPos(game.getPlatform().getPos().add(new Vector(0, -getDimX()/2 - game.getPlatform().getDimY()/2)));
+			setPos(game.getPlatform().getPos().add(new Vector(0,
+					-getDimX()/2 - game.getPlatform().getDimY()/2)));
 			return;
 		}
 		
@@ -65,7 +66,6 @@ public class Ball extends MovingGameObject {
 		}
 		
 		if(getPos().getY() >= 620) {
-//			setVelocity(new Vector(getVelocity().getX(), -Math.abs(getVelocity().getY())));
 			setActive(false);
 		}
 		

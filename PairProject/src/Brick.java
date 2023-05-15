@@ -38,26 +38,34 @@ public class Brick extends GameObject {
 		boolean collisionOccurred = false;
 		
 		// left wall
-		if(objX+objR >= brickX - getDimX()/2 && objX <= brickX - getDimX()/2 && Math.abs(objY-brickY)<getDimY()/2+objR) {
-			obj.setVelocity(new Vector(-1*Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
+		if(objX+objR >= brickX - getDimX()/2 && 
+				objX <= brickX - getDimX()/2 && Math.abs(objY-brickY)<getDimY()/2+objR) {
+			obj.setVelocity(new Vector(
+					-1*Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
 			collisionOccurred = true;
 		}
 		
 		// right wall
-		if(objX-objR <= brickX + getDimX()/2 && objX >= brickX + getDimX()/2 && Math.abs(objY-brickY)<getDimY()/2+objR) {
-			obj.setVelocity(new Vector(Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
+		if(objX-objR <= brickX + getDimX()/2 && objX >= 
+				brickX + getDimX()/2 && Math.abs(objY-brickY)<getDimY()/2+objR) {
+			obj.setVelocity(new Vector(Math.abs(
+					obj.getVelocity().getX()), obj.getVelocity().getY()));
 			collisionOccurred = true;
 		}
 		
 		// bottom wall
-		if(objY-objR <= brickY + getDimY()/2 && objY >= brickY + getDimY()/2 && Math.abs(objX-brickX)<getDimX()/2+objR) {
-			obj.setVelocity(new Vector(obj.getVelocity().getX(), Math.abs(obj.getVelocity().getY())));
+		if(objY-objR <= brickY + getDimY()/2 && objY >= 
+				brickY + getDimY()/2 && Math.abs(objX-brickX)<getDimX()/2+objR) {
+			obj.setVelocity(new Vector(
+					obj.getVelocity().getX(), Math.abs(obj.getVelocity().getY())));
 			collisionOccurred = true;
 		}
 		
 		// top wall
-		if(objY+objR >= brickY - getDimY()/2 && objY <= brickY - getDimY()/2 && Math.abs(objX-brickX)<getDimX()/2+objR) {
-			obj.setVelocity(new Vector(obj.getVelocity().getX(), -1*Math.abs(obj.getVelocity().getY())));
+		if(objY+objR >= brickY - getDimY()/2 && objY <= brickY - getDimY()/2 
+				&& Math.abs(objX-brickX)<getDimX()/2+objR) {
+			obj.setVelocity(new Vector(obj.getVelocity().getX(),
+					-1*Math.abs(obj.getVelocity().getY())));
 			collisionOccurred = true;
 		}
 		
@@ -83,7 +91,8 @@ public class Brick extends GameObject {
 		} else {
 			this.health = health;
 			try {
-			    damageOverlay = ImageIO.read(getClass().getClassLoader().getResource("crack"+(3-this.health)+".png")).
+			    damageOverlay = ImageIO.read(getClass().getClassLoader().getResource(
+			    		"crack"+(3-this.health)+".png")).
 						getScaledInstance(getDimX(), getDimY(), 0);
 			} catch (IOException e) {
 				System.out.println("Certain sprites not found.");
