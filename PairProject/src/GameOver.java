@@ -19,7 +19,7 @@ public class GameOver {
 	JButton returnToMain;
 	JLabel[] colon = new JLabel[4];
 	
-	public GameOver() {
+	public GameOver(boolean won, GameRunner gr) {
 		
 		panel = new JPanel() {
 			public void paintComponent(Graphics g) {
@@ -39,7 +39,6 @@ public class GameOver {
 		frame.pack();
 		frame.setVisible(true);
 		
-		boolean won = true;
 		if (won) {
 			Image img = new ImageIcon(getClass().getClassLoader().
 					getResource("You won!.png")).getImage().
@@ -119,7 +118,8 @@ public class GameOver {
 		returnToMain.setVisible(true);
 		returnToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Return to main menu");
+				frame.setVisible(false);
+				new GameRunner();
 			}
 		});
 		
@@ -132,6 +132,6 @@ public class GameOver {
 		g.fillRect(0, 0, 600, 600);
 	}
 	public static void main(String[] args) {
-		new GameOver();
+		//new GameOver();
 	}
 }

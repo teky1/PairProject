@@ -80,6 +80,7 @@ public class GamePanel extends JPanel implements MouseListener {
 		graphFrame.pack();
 		graphFrame.setVisible(true);
 		graphFrame.setDefaultCloseOperation(graphFrame.EXIT_ON_CLOSE);
+		gamePanel.setParentFrame(graphFrame);
 	}
 	
 	private void renderGameObject(GameObject obj, Image sprite, Graphics2D g) {
