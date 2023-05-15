@@ -16,8 +16,6 @@ public class PowerUp extends MovingGameObject {
 		
 		Platform p = game.getPlatform();
 		
-		// available methods in Platform: p.getDimX(), p.getDimY(), p.getPos().getX(), p.getPos().getY()
-		// all the same methods are available in this current class using this.getDimX() and so on
 
 		double halfWidthPlatform = p.getDimX() / 2.0;
 		double halfHeightPlatform = p.getDimY() / 2.0;

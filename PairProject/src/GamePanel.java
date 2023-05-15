@@ -55,10 +55,7 @@ public class GamePanel extends JPanel implements MouseListener {
 					getResource(String.valueOf(i+1)+".png")).getImage().
 					getScaledInstance(10, 12, java.awt.Image.SCALE_SMOOTH);
 		}
-		
-//		this.lifeNum = new ImageIcon(getClass().getClassLoader().
-//				getResource(String.valueOf(lives)+".png")).getImage().
-//				getScaledInstance(10, 12, java.awt.Image.SCALE_SMOOTH);
+
 		
 		addMouseListener(this);
 	}
@@ -97,22 +94,29 @@ public class GamePanel extends JPanel implements MouseListener {
 	
 	public static void startFrame(GamePanel gamePanel) {
 		JFrame.setDefaultLookAndFeelDecorated(false);
-		gamePanel.setSize(new Dimension(gamePanel.width, gamePanel.height));
-		gamePanel.setPreferredSize(new Dimension(gamePanel.getDimX(), gamePanel.getDimY()));
+		gamePanel.setSize(new Dimension(
+				gamePanel.width, gamePanel.height));
+		gamePanel.setPreferredSize(new Dimension(
+				gamePanel.getDimX(), gamePanel.getDimY()));
 		
 		JFrame graphFrame = new JFrame("Astro Breaker");
 		graphFrame.setResizable(false);
-		graphFrame.setSize(new Dimension(gamePanel.getDimX()+11, gamePanel.getDimY()+11));
-		graphFrame.setPreferredSize(new Dimension(gamePanel.getDimX()+11, gamePanel.getDimY()+11));
+		graphFrame.setSize(new Dimension(
+				gamePanel.getDimX()+11, gamePanel.getDimY()+11));
+		graphFrame.setPreferredSize(new Dimension(
+				gamePanel.getDimX()+11, gamePanel.getDimY()+11));
 		graphFrame.setContentPane(gamePanel);
 		graphFrame.pack();
 		graphFrame.setVisible(true);
-		graphFrame.setDefaultCloseOperation(graphFrame.EXIT_ON_CLOSE);
+		graphFrame.setDefaultCloseOperation(
+				graphFrame.EXIT_ON_CLOSE);
 		gamePanel.setParentFrame(graphFrame);
 	}
 	
-	private void renderGameObject(GameObject obj, Image sprite, Graphics2D g) {
-		g.drawImage(sprite, obj.getTopLeftPos().getIntX(), obj.getTopLeftPos().getIntY(), null);
+	private void renderGameObject(GameObject obj,
+			Image sprite, Graphics2D g) {
+		g.drawImage(sprite, obj.getTopLeftPos().getIntX(),
+				obj.getTopLeftPos().getIntY(), null);
 	}
 	
 	public void paintComponent(Graphics graphics) {

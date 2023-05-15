@@ -5,7 +5,8 @@ import javax.imageio.ImageIO;
 
 
 /*
- * GameObject: Represents a game object that has a positiion, and sprite
+ * GameObject: Represents a game object 
+ * that has a positiion, and sprite
  * */
 public class GameObject {
 	
@@ -13,7 +14,8 @@ public class GameObject {
 	// Position of center of game object
 	Vector pos;
 	
-	// Intended dimensions of GameObject when rendered
+	// Intended dimensions of GameObject 
+	// when rendered
 	private int dimX;
 	private int dimY;
 	
@@ -87,7 +89,8 @@ public class GameObject {
 			return;
 		}
 		try {
-		    sprite = ImageIO.read(getClass().getClassLoader().getResource(newSprite)).
+		    sprite = ImageIO.read(getClass().
+		    		getClassLoader().getResource(newSprite)).
 					getScaledInstance(getDimX(), getDimY(), 0);
 		    spriteLocation = newSprite;
 		} catch (IOException e) {

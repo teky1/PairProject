@@ -15,8 +15,10 @@ public class MainScreen extends JPanel {
 	public MainScreen(GameRunner gr) {
 		gameRunner = gr;
 		try {
-			backgroundImage = ImageIO.read(getClass().getClassLoader().
-					getResource("title-screen.png")).getScaledInstance(600, 600, 0);
+			backgroundImage = ImageIO.read(getClass().
+					getClassLoader().
+					getResource("title-screen.png")).
+					getScaledInstance(600, 600, 0);
 		} catch (IOException e) {
 			System.out.println("Background image not found.");
 			e.printStackTrace();
@@ -39,13 +41,16 @@ public class MainScreen extends JPanel {
 		int buttonHeight = 3*17;
 		Image tutorialImg = new ImageIcon(getClass().getClassLoader().
 				getResource("tutorial-button.png")).getImage().
-				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+				getScaledInstance(buttonLength, buttonHeight, 
+						java.awt.Image.SCALE_SMOOTH);
 		Image playImg = new ImageIcon(getClass().getClassLoader().
 				getResource("play-button.png")).getImage().
-				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+				getScaledInstance(buttonLength, buttonHeight, 
+						java.awt.Image.SCALE_SMOOTH);
 		Image randomImg = new ImageIcon(getClass().getClassLoader().
 				getResource("random-button.png")).getImage().
-				getScaledInstance(buttonLength, buttonHeight, java.awt.Image.SCALE_SMOOTH);
+				getScaledInstance(buttonLength, buttonHeight, 
+						java.awt.Image.SCALE_SMOOTH);
 		tutorial = new JButton(new ImageIcon(tutorialImg));
 		playButton = new JButton(new ImageIcon(playImg));
 		randomButton = new JButton(new ImageIcon(randomImg));

@@ -8,7 +8,6 @@ public class Brick extends GameObject {
 	private Game game;
 	
 	private int health;
-	private Hitbox hitbox;
 	
 	private Image damageOverlay;
 	

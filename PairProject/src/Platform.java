@@ -23,20 +23,31 @@ public class Platform extends GameObject {
 		
 		
 		// left wall
-		if(objX+objR >= platformX - getDimX()/2 && objX <= platformX - getDimX()/2 && Math.abs(objY-platformY)<getDimY()/2+objR) {
-			obj.setVelocity(new Vector(-1*Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
+		if(objX+objR >= platformX - getDimX()/2 && 
+				objX <= platformX - getDimX()/2 && 
+				Math.abs(objY-platformY)<getDimY()/2+objR) {
+			obj.setVelocity(new Vector(-1*Math.abs(
+					obj.getVelocity().getX()), obj.getVelocity().getY()));
 		}
 		
 		// right wall
-		if(objX-objR <= platformX + getDimX()/2 && objX >= platformX + getDimX()/2 && Math.abs(objY-platformY)<getDimY()/2+objR) {
-			obj.setVelocity(new Vector(Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
+		if(objX-objR <= platformX + getDimX()/2 
+				&& objX >= platformX + getDimX()/2 
+				&& Math.abs(objY-platformY)<getDimY()/2+objR) {
+			obj.setVelocity(new Vector(Math.abs(obj.getVelocity().getX()),
+					obj.getVelocity().getY()));
 		}
 		
 		// top wall
-		if(objY+objR >= platformY - getDimY()/2 && objY <= platformY - getDimY()/2 && Math.abs(objX-platformX)<getDimX()/2+objR) {
-			double magnitude = Math.hypot(obj.getVelocity().getX(), obj.getVelocity().getY());
-			double angle = ((objX - platformX)/(getDimX()/2)) * Math.PI/3 - Math.PI/2;
-			obj.setVelocity((new Vector(Math.cos(angle), Math.sin(angle))).multiply(magnitude));
+		if(objY+objR >= platformY - getDimY()/2 &&
+				objY <= platformY - getDimY()/2 &&
+				Math.abs(objX-platformX)<getDimX()/2+objR) {
+			double magnitude = Math.hypot(obj.getVelocity().getX(), 
+					obj.getVelocity().getY());
+			double angle = ((objX - platformX)/(getDimX()/2))
+					* Math.PI/3 - Math.PI/2;
+			obj.setVelocity((new Vector(Math.cos(angle), 
+					Math.sin(angle))).multiply(magnitude));
 		}
 	}
 	

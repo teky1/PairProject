@@ -20,7 +20,8 @@ public class Game {
 		this.lives = 5;
 		
 		try {
-		    backgroundImg = ImageIO.read(getClass().getClassLoader().getResource("background.png")).
+		    backgroundImg = ImageIO.read(getClass().
+		    		getClassLoader().getResource("background.png")).
 					getScaledInstance(600, 600, 0);
 		} catch (IOException e) {
 			System.out.println("backgroudn sprites not found.");
@@ -53,42 +54,25 @@ public class Game {
 	}
 	
 	public void loadLevel(int levelCode) {
-		/*
-		level = new Level();
-		ArrayList<Brick> bricks = new ArrayList<Brick>();
-		Brick b1 = new Brick();
-		b1.setPos(new Vector(250, 250));
-		Brick b2 = new Brick();
-		b2.setPos(new Vector(100, 100));
-		Brick b3 = new Brick();
-		b3.setPos(new Vector(400, 200));
-		Brick b4 = new Brick();
-		b4.setPos(new Vector(300, 400));
-		bricks.add(b1);
-		bricks.add(b2);
-		bricks.add(b3);
-		bricks.add(b4);
-		level.setBricks(bricks);
-		*/
 		level = new Level();
 		ArrayList<Brick> bricks = new ArrayList<Brick>();
 		ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
 		int xPos = 70;
 		int yPos = 70;
-//		int xVel = 0;
-//		int yVel = 0;
 		if(levelCode==1) {
 			for(xPos=59; xPos<570; xPos+=32) {
-//				for(yPos=50; yPos<250; yPos+=16) {
 				for(yPos=50; yPos<100; yPos+=16) {
 					Brick b = new Brick(this);
 					b.setPos(new Vector(xPos, yPos));
 					bricks.add(b);
 				}
 			}
-			Asteroid a1 = new Asteroid(new Vector(100, 100), new Vector(Math.random()*200, 200), this);
-			Asteroid a2 = new Asteroid(new Vector(180, 250), new Vector(Math.random()*200, 200), this);
-			Asteroid a3 = new Asteroid(new Vector(300, 418), new Vector(Math.random()*200, 200), this);
+			Asteroid a1 = new Asteroid(new Vector(100, 100), 
+					new Vector(Math.random()*200, 200), this);
+			Asteroid a2 = new Asteroid(new Vector(180, 250), 
+					new Vector(Math.random()*200, 200), this);
+			Asteroid a3 = new Asteroid(new Vector(300, 418), 
+					new Vector(Math.random()*200, 200), this);
 			asteroids.add(a1);
 			asteroids.add(a2);
 			asteroids.add(a3);
@@ -100,11 +84,6 @@ public class Game {
 					bricks.add(b);
 				}
 			}
-//			for(int i=0; i<8; i++) {
-//				Vector p = new Vector(Math.random()*400 + 70, Math.random()*400 + 70);
-//				Vector v = new Vector(Math.random()*150, Math.random()*150);
-//				asteroids.add(new Asteroid(p, v, this));
-//			}
 			
 		} else if(levelCode==3) {
 			for(xPos=59; xPos<570; xPos+=96) {
@@ -127,23 +106,9 @@ public class Game {
 				bricks.add(b);
 			}
 		}
-//		level = new Level();
-//		
-//		
-//		for(int i = 0; i < 20; i++) {
-//			Brick b = new Brick(this);
-//			b.setPos(new Vector(3*Math.random()*150+60, 3*Math.random()*120+60));
-//			bricks.add(b);
-//		}
 		
 		level.setBricks(bricks);
 		level.setAsteroids(asteroids);
-//		Asteroid a1 = new Asteroid(new Vector(100, 100), new Vector(Math.random()*200, 200), this);
-//		Asteroid a2 = new Asteroid(new Vector(180, 250), new Vector(Math.random()*200, 200), this);
-//		Asteroid a3 = new Asteroid(new Vector(300, 418), new Vector(Math.random()*200, 200), this);
-//		asteroids.add(a1);
-//		asteroids.add(a2);
-//		asteroids.add(a3);
 		
 		
 	}
