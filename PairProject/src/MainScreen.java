@@ -52,7 +52,6 @@ public class MainScreen extends JPanel {
 
 		playButton.setBounds(150, 340, buttonLength, buttonHeight);
 		randomButton.setBounds(150, 450, buttonLength, buttonHeight);
-//		tutorial.setBounds(150, 450, buttonLength, buttonHeight);
 		playButton.setOpaque(false);
 		playButton.setContentAreaFilled(false);
 		playButton.setBorderPainted(false);
