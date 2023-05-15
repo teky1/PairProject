@@ -17,9 +17,10 @@ public class Asteroid extends MovingGameObject {
 			return;
 		}
 		
-		if(testForAsteroidCollisions()) {
-			setVelocity(getVelocity().multiply(new Vector(1, -1)));
-		}
+//		if(testForAsteroidCollisions()) {
+//			setVelocity(getVelocity().multiply(new Vector(1, -1)));
+//			setVelocity(new Vector(-1*Math.abs(getVelocity().getX()), getVelocity().getY()));
+//		}
 		
 		if(testForBallCollisions()!=null && !testForBallCollisions().getStartState()) {
 //			Ball b = testForBallCollisions();
@@ -78,18 +79,18 @@ public class Asteroid extends MovingGameObject {
 		return null;
 	}
 	
-	public boolean testForAsteroidCollisions() {
-		for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
-			if(game.getLevel().getAsteroids().get(i)!=this) {
-				if(Math.abs(getPos().getX()-game.getLevel().getAsteroids().get(i).getPos().getX())<=30 &&
-				   Math.abs(getPos().getY()-game.getLevel().getAsteroids().get(i).getPos().getY())<=30) {
-					return true;
-				}
-			}
-			
-		}
-		return false;
-	}
+//	public boolean testForAsteroidCollisions() {
+//		for(int i=0; i<game.getLevel().getAsteroids().size(); i++) {
+//			if(game.getLevel().getAsteroids().get(i)!=this) {
+//				if(Math.abs(getPos().getX()-game.getLevel().getAsteroids().get(i).getPos().getX())<=30 &&
+//				   Math.abs(getPos().getY()-game.getLevel().getAsteroids().get(i).getPos().getY())<=30) {
+//					return true;
+//				}
+//			}
+//			
+//		}
+//		return false;
+//	}
 	
 	public int getHealth() {
 		return health;
