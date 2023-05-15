@@ -23,7 +23,7 @@ public class GameRunner implements ActionListener {
 		gamePanel = new GamePanel(game, this);
 		menu = new MainScreen(this);
 		
-		maxLevel = 3;
+		maxLevel = 5;
 		started = false;	
 	}
 	
@@ -61,7 +61,7 @@ public class GameRunner implements ActionListener {
 	        * Include code that intiializes stuff in Game with relevent information
 	        * 
 	        * */
-			game.loadLevel(0);
+			game.loadLevel(2);
 		
 	       
 	       GamePanel.startFrame(gamePanel);
@@ -85,6 +85,7 @@ public class GameRunner implements ActionListener {
 
     boolean bricksActive = false;
     boolean ballsActive = false;
+    boolean asteroidsActive = false;
 
     ArrayList<Ball> balls = game.getBalls();
 		for(Ball ball : balls) {
@@ -104,6 +105,12 @@ public class GameRunner implements ActionListener {
 					bricksActive = true;
 				}
 			}
+			
+			for(Asteroid a : game.getLevel().getAsteroids()) {
+				if(a.isActive()) {
+					asteroidsActive = true;
+				}
+			}
 		}
     	
     ArrayList<PowerUp> powerups = game.getPowerups();
@@ -111,7 +118,7 @@ public class GameRunner implements ActionListener {
 			powerup.update(timeDelta);
 		}
 		
-		if(!bricksActive) {
+		if(!bricksActive && !asteroidsActive) {
 			game.reset();
 			if(currentLevel > 0 && currentLevel < maxLevel) {
 				currentLevel++;

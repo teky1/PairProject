@@ -27,10 +27,10 @@ public class Asteroid extends MovingGameObject {
 //				b.setVelocity(b.getVelocity().multiply(new Vector(1, -1)));
 //			}
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
-//			Ball b = testForBallCollisions();
-//			Vector change = new Vector(b.getVelocity().getX(), Math.abs(b.getVelocity().getY()));
-			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
-//			b.setVelocity(change);
+			Ball b = testForBallCollisions();
+			Vector change = new Vector(b.getVelocity().getX(), -1*Math.abs(b.getVelocity().getY()));
+//			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
+			b.setVelocity(change);
 			setHealth(getHealth()-1);
 		}
 		
@@ -94,6 +94,7 @@ public class Asteroid extends MovingGameObject {
 	public void setHealth(int newHealth) {
 		health = newHealth;
 		if(health <= 0) {
+			setActive(false);
 			setSprite(null);
 			return;
 		} else if (health > 3) {

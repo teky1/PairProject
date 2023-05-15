@@ -60,7 +60,7 @@ public class Level {
 		brickList = (ArrayList<Brick>) bricks.clone();
 	}
 	
-	public static Level load(int levelCode) throws FileNotFoundException {
+	public static Level load(int levelCode) {
 		// @DIA PUT LEVEL LOAD CODE HERE AND HAVE IT RETURN A POPULATED LEVEL
 		// THIS IS TEST CODE IM LEAVING HERE FOR NOW -Joel
 		
