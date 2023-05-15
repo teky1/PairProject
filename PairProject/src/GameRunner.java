@@ -22,7 +22,7 @@ public class GameRunner implements ActionListener {
 		gamePanel = new GamePanel(game, this);
 		menu = new MainScreen(this);
 
-		maxLevel = 3;
+		maxLevel = 30;
 		started = false;
 	}
 
@@ -90,12 +90,19 @@ public class GameRunner implements ActionListener {
 			}
 
 			for (Brick brick : game.getLevel().getBricks()) {
-				for (Asteroid a : game.getLevel().getAsteroids()) {
-					brick.handleCollisions(a);
-				}
 				if(brick.isActive()) {
+					brick.handleCollisions(ball);
 					bricksActive = true;
 				}
+			}
+		}
+		
+		for(Brick brick : game.getLevel().getBricks()) {
+			for (Asteroid a : game.getLevel().getAsteroids()) {
+				if(a.isActive() && brick.isActive()) {
+					brick.handleCollisions(a);
+				}
+				
 			}
 		}
 
