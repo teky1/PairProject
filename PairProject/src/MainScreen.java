@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,6 @@ import javax.swing.*;
 public class MainScreen extends JPanel {
 	JFrame frame;
 	JPanel panel;
-	JLabel title, logo;
 	JButton tutorial, playButton, randomButton;
 	Image backgroundImage;
 	GameRunner gameRunner;
@@ -99,9 +97,4 @@ public class MainScreen extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	public void paintComponent(Graphics g) {
-	    super.paintComponent(g);
-
-	    g.drawImage(backgroundImage, 0, 0, this);
-	  }
 }
