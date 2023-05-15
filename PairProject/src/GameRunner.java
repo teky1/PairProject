@@ -140,8 +140,8 @@ public class GameRunner implements ActionListener {
 
 	public static void main(String[] args) {
 		GameRunner game = new GameRunner();
-		game.setupGameloop();
-		game.startGameloop();
+//		game.setupGameloop();
+//		game.startGameloop();
 	}
 
 }
