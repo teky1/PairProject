@@ -136,10 +136,19 @@ public class GameRunner implements ActionListener {
 			}
 		}
 		if (!ballsActive) {
-			timer.stop();
-			System.out.println("lose");
-			gamePanel.close();
-			new GameOver(false, this);
+//			System.out.println(game.getLives());
+			if(game.getLives()>1) {
+				game.setLives(game.getLives()-1);
+				ArrayList<Ball> b = game.getBalls();
+				b.add(new Ball(game));
+				game.setBalls(b);
+			} else {
+				timer.stop();
+				System.out.println("lose");
+				gamePanel.close();
+				new GameOver(false, this);
+			}
+			
 		}
 
 		for (int i = 0; i < game.getLevel().getAsteroids().size(); i++) {
