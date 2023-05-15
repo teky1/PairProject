@@ -1,4 +1,6 @@
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -20,7 +22,11 @@ public class GamePanel extends JPanel implements MouseListener {
 	private Game game;
 	private GameRunner gameRunner;
 	private JFrame parentFrame;
-	
+	private int lives;
+	private Image img;
+	private Image colon1;
+	private Image colon2;
+	private Image lifeNum;
 	// 
 	private int width;
 	private int height;
@@ -31,6 +37,20 @@ public class GamePanel extends JPanel implements MouseListener {
 		this.gameRunner = gameRunner;
 		this.width = 600;
 		this.height = 600;
+		this.lives = game.getLives();
+		
+		this.img = new ImageIcon(getClass().getClassLoader().
+				getResource("Lives.png")).getImage().
+				getScaledInstance(100, 12, java.awt.Image.SCALE_SMOOTH);
+		this.colon1 = new ImageIcon(getClass().getClassLoader().
+				getResource("colon.png")).getImage().
+				getScaledInstance(3, 3, java.awt.Image.SCALE_SMOOTH);
+		this.colon2 = new ImageIcon(getClass().getClassLoader().
+				getResource("colon.png")).getImage().
+				getScaledInstance(3, 3, java.awt.Image.SCALE_SMOOTH);
+		this.lifeNum = new ImageIcon(getClass().getClassLoader().
+				getResource(String.valueOf(lives)+".png")).getImage().
+				getScaledInstance(10, 12, java.awt.Image.SCALE_SMOOTH);
 		
 		addMouseListener(this);
 	}
@@ -118,6 +138,13 @@ public class GamePanel extends JPanel implements MouseListener {
 		for(Asteroid asteroid : game.getLevel().getAsteroids()) {
 			renderGameObject(asteroid, asteroid.getSprite(), g);
 		}
+		
+		
+		g.drawImage(img, 400, 16, null);
+		g.drawImage(colon1, 505, 19, null);
+		g.drawImage(colon2, 505, 25, null);
+		g.drawImage(lifeNum, 520, 16, null);
+		
 	}
 
 	@Override
