@@ -32,14 +32,8 @@ public class Platform extends GameObject {
 			obj.setVelocity(new Vector(Math.abs(obj.getVelocity().getX()), obj.getVelocity().getY()));
 		}
 		
-		// bottom wall
-//		if(objY-objR <= platformY + getDimY()/2 && objY >= platformY + getDimY()/2 && Math.abs(objX-platformX)<getDimX()/2+objR) {
-//			obj.setVelocity(new Vector(obj.getVelocity().getX(), Math.abs(obj.getVelocity().getY())));
-//		}
-		
 		// top wall
 		if(objY+objR >= platformY - getDimY()/2 && objY <= platformY - getDimY()/2 && Math.abs(objX-platformX)<getDimX()/2+objR) {
-//			obj.setVelocity(new Vector(obj.getVelocity().getX(), -1*Math.abs(obj.getVelocity().getY())));
 			double magnitude = Math.hypot(obj.getVelocity().getX(), obj.getVelocity().getY());
 			double angle = ((objX - platformX)/(getDimX()/2)) * Math.PI/3 - Math.PI/2;
 			obj.setVelocity((new Vector(Math.cos(angle), Math.sin(angle))).multiply(magnitude));
