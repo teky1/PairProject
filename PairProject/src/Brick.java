@@ -61,7 +61,7 @@ public class Brick extends GameObject {
 			collisionOccurred = true;
 		}
 		
-		if(collisionOccurred) {
+		if(collisionOccurred && obj.getClass().toString().contains("Ball")) {
 			setHealth(health-1);
 		}
 		
