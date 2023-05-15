@@ -77,7 +77,7 @@ public class Game {
 		int yPos = 70;
 //		int xVel = 0;
 //		int yVel = 0;
-		if(levelCode==0) {
+		if(levelCode==1) {
 			for(xPos=59; xPos<570; xPos+=32) {
 //				for(yPos=50; yPos<250; yPos+=16) {
 				for(yPos=50; yPos<100; yPos+=16) {
@@ -92,7 +92,7 @@ public class Game {
 			asteroids.add(a1);
 			asteroids.add(a2);
 			asteroids.add(a3);
-		} else if(levelCode==1) {
+		} else if(levelCode==2) {
 			for(xPos=59; xPos<570; xPos+=80) {
 				for(yPos=50; yPos<250; yPos+=16) {
 					Brick b = new Brick(this);
@@ -106,7 +106,7 @@ public class Game {
 //				asteroids.add(new Asteroid(p, v, this));
 //			}
 			
-		} else if(levelCode==2) {
+		} else if(levelCode==3) {
 			for(xPos=59; xPos<570; xPos+=96) {
 				for(yPos=50; yPos<250; yPos+=48) {
 					Brick b = new Brick(this);
@@ -119,10 +119,7 @@ public class Game {
 				Vector v = new Vector(Math.random()*100 + 50, Math.random()*100 + 50);
 				asteroids.add(new Asteroid(p, v, this));
 			}
-		} else if(levelCode==3) {
-			
-			
-		} else if(levelCode==20) { // randomized levels
+		} else if(levelCode==0) { // randomized levels
 			int limit = (int) (Math.random()*30 + 1);
 			for(int i=0; i<limit; i++) {
 				Brick b = new Brick(this);
