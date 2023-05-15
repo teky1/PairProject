@@ -168,7 +168,17 @@ public class Game {
 	}
 	
 	public void spawnPowerup(Vector pos) {
-		powerups.add(new BallsPowerUp(pos, this));
+		double rand = Math.random();
+		if(rand <= .25) {
+			powerups.add(new BallsPowerUp(pos, this));
+		} else if(rand <= .5) {
+			powerups.add(new LongPowerUp(pos, this));
+		} else if(rand <= .75) {
+			powerups.add(new ShortPowerUp(pos, this));
+		} else {
+			System.out.println("life powerup");
+		}
+		
 	}
 	
 	public Platform getPlatform() {

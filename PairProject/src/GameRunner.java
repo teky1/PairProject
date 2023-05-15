@@ -73,7 +73,15 @@ public class GameRunner implements ActionListener {
 
 		Vector mousePos = new Vector(gamePanel.getMousePosition());
 		Platform platform = game.getPlatform();
-		platform.setPos(new Vector(mousePos.getX(), platform.getPos().getY()));
+		
+		double platformPos = mousePos.getX();
+		if(mousePos.getX() < 13*3 + platform.getDimX()/2) {
+			platformPos = 13*3 + platform.getDimX()/2;
+		} else if(mousePos.getX() > (185*3 - platform.getDimX()/2)) {
+			platformPos = 185*3 - platform.getDimX()/2;
+		}
+		
+		platform.setPos(new Vector(platformPos, platform.getPos().getY()));
 
 	    boolean bricksActive = false;
 	    boolean ballsActive = false;

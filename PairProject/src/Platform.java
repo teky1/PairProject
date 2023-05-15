@@ -7,7 +7,7 @@ public class Platform extends GameObject {
 		super(new Vector(0, 500));
 		
 		game = g;
-		setDim(100, 12);
+		setDim(65, 12);
 		setSprite("platform.png");
 		
 	}
