@@ -13,7 +13,9 @@ public class LifePowerUp extends PowerUp{
 	
 	public void onCollect() {
 		
-		game.setLives(game.getLives()+1);
+		if(game.getLives()<5) {
+			game.setLives(game.getLives()+1);
+		}
 		
 	}
 	
