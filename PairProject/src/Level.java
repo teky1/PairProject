@@ -11,10 +11,6 @@ public class Level {
 	private ArrayList<Brick> brickList;
 	private ArrayList<Integer> healthPoints;
 	
-	Level() {
-		
-	}
-	
 	Level(ArrayList<Asteroid> asteroids, ArrayList<Brick> bricks) {
 		asteroidList = asteroids;
 		brickList = bricks;

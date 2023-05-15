@@ -17,9 +17,9 @@ public class Asteroid extends MovingGameObject {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
 		}
 		
-		if(testForBallCollisions()) {
+		if(testForBallCollisions()!=null) {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
-			game.getBall().setVelocity(game.getBall().getVelocity().multiply(new Vector(1, -1)));
+			testForBallCollisions().setVelocity(testForBallCollisions().getVelocity().multiply(new Vector(1, -1)));
 			// preventing crashes for now
 			if(getHealth()!=1) {
 				setHealth(getHealth()-1);
@@ -39,9 +39,16 @@ public class Asteroid extends MovingGameObject {
 		
 	}
 	
-	public boolean testForBallCollisions() {
-		return (Math.abs(getPos().getX()-game.getBall().getPos().getX())<=20 &&
-				Math.abs(getPos().getY()-game.getBall().getPos().getY())<=20);
+	public Ball testForBallCollisions() {
+//		return (Math.abs(getPos().getX()-game.getBall().getPos().getX())<=20 &&
+//				Math.abs(getPos().getY()-game.getBall().getPos().getY())<=20);
+		for(Ball b : game.getBalls()) {
+			if (Math.abs(getPos().getX()-b.getPos().getX())<=20 &&
+				Math.abs(getPos().getY()-b.getPos().getY())<=20) {
+				return b;
+			}
+		}
+		return null;
 	}
 	
 	public boolean testForAsteroidCollisions() {
