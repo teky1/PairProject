@@ -21,15 +21,8 @@ public class GameRunner implements ActionListener {
 		game = new Game();
 		gamePanel = new GamePanel(game, this);
 		menu = new MainScreen(this);
-<<<<<<< HEAD
-		
 		maxLevel = 5;
-		started = false;	
-=======
-
-		maxLevel = 3;
 		started = false;
->>>>>>> c6d921667172007cde31ac04d11596b5193a43eb
 	}
 
 	public boolean getStarted() {
@@ -59,7 +52,6 @@ public class GameRunner implements ActionListener {
 		calculateFrame();
 		gamePanel.renderFrame();
 	}
-<<<<<<< HEAD
 	
 	public void setupGameloop(){
 	       
@@ -74,21 +66,6 @@ public class GameRunner implements ActionListener {
 	       lastFrame = System.currentTimeMillis()%1000000;
 	       calculateFrame();
 	       gamePanel.renderFrame();
-=======
-
-	public void setupGameloop() {
-
-		/*
-		 * Include code that intiializes stuff in Game with relevent information
-		 * 
-		 */
-		game.loadLevel(0);
-
-		GamePanel.startFrame(gamePanel);
-		lastFrame = System.currentTimeMillis() % 1000000;
-		calculateFrame();
-		gamePanel.renderFrame();
->>>>>>> c6d921667172007cde31ac04d11596b5193a43eb
 	}
 
 	public void calculateFrame() {
@@ -97,17 +74,11 @@ public class GameRunner implements ActionListener {
 		Platform platform = game.getPlatform();
 		platform.setPos(new Vector(mousePos.getX(), platform.getPos().getY()));
 
-<<<<<<< HEAD
-    boolean bricksActive = false;
-    boolean ballsActive = false;
-    boolean asteroidsActive = false;
-=======
+	    boolean bricksActive = false;
+	    boolean ballsActive = false;
+	    boolean asteroidsActive = false;
 		long currTime = System.currentTimeMillis() % 1000000;
 		double timeDelta = (double) (currTime - lastFrame) / 1000.;
->>>>>>> c6d921667172007cde31ac04d11596b5193a43eb
-
-		boolean bricksActive = false;
-		boolean ballsActive = false;
 
 		ArrayList<Ball> balls = game.getBalls();
 		for (Ball ball : balls) {
@@ -138,13 +109,8 @@ public class GameRunner implements ActionListener {
 		for (PowerUp powerup : powerups) {
 			powerup.update(timeDelta);
 		}
-<<<<<<< HEAD
 		
 		if(!bricksActive && !asteroidsActive) {
-=======
-
-		if (!bricksActive) {
->>>>>>> c6d921667172007cde31ac04d11596b5193a43eb
 			game.reset();
 			if (currentLevel > 0 && currentLevel < maxLevel) {
 				currentLevel++;
@@ -162,11 +128,12 @@ public class GameRunner implements ActionListener {
 		}
 		lastFrame = currTime;
 	}
+	
 
 	public static void main(String[] args) {
 		GameRunner game = new GameRunner();
-//		game.setupGameloop();
-//		game.startGameloop();
+		game.setupGameloop();
+		game.startGameloop();
 	}
 
 }
