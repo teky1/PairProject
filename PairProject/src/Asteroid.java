@@ -13,6 +13,10 @@ public class Asteroid extends MovingGameObject {
 	
 	public void update(double timeDelta) {
 		
+		if(!isActive()) {
+			return;
+		}
+		
 		if(testForAsteroidCollisions()) {
 			setVelocity(getVelocity().multiply(new Vector(1, -1)));
 		}
