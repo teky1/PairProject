@@ -90,6 +90,7 @@ public class GameOver {
 			levelReached.setVisible(true);
 			colon[2].setBounds(408,304,4,4);
 			colon[3].setBounds(408,312,4,4);
+
 			img = new ImageIcon(getClass().getClassLoader().
 					getResource(String.valueOf(livesNum)+".png")).getImage().
 					getScaledInstance(14, 16, java.awt.Image.SCALE_SMOOTH);

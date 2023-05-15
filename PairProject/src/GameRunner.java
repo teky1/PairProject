@@ -22,7 +22,7 @@ public class GameRunner implements ActionListener {
 		gamePanel = new GamePanel(game, this);
 		menu = new MainScreen(this);
 
-		maxLevel = 30;
+		maxLevel = 3;
 		started = false;
 	}
 
@@ -34,7 +34,7 @@ public class GameRunner implements ActionListener {
 		if (isRandom) {
 			currentLevel = 0;
 		} else {
-			currentLevel = 3;
+			currentLevel = 1;
 		}
 		setupGameloop();
 		startGameloop();
@@ -130,7 +130,7 @@ public class GameRunner implements ActionListener {
 			} else {
 				timer.stop();
 				gamePanel.close();
-				new GameOver(true, this, game.getLives(), currentLevel);
+				new GameOver(true, this, this.maxLevel, game.getLives());
 			}
 		}
 		if (!ballsActive) {
