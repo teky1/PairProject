@@ -60,7 +60,7 @@ public class GameRunner implements ActionListener {
 	        * Include code that intiializes stuff in Game with relevent information
 	        * 
 	        * */
-			game.loadLevel(1);
+			game.loadLevel(currentLevel);
 		
 	       
 	       GamePanel.startFrame(gamePanel);
