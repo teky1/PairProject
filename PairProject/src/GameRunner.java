@@ -55,18 +55,12 @@ public class GameRunner implements ActionListener {
 	}
 	
 	public void setupGameloop(){
-	       
-	       /*
-	        * Include code that intiializes stuff in Game with relevent information
-	        * 
-	        * */
-			game.loadLevel(currentLevel);
-		
-	       
-	       GamePanel.startFrame(gamePanel);
-	       lastFrame = System.currentTimeMillis()%1000000;
-	       calculateFrame();
-	       gamePanel.renderFrame();
+		game.loadLevel(currentLevel);
+
+		GamePanel.startFrame(gamePanel);
+		lastFrame = System.currentTimeMillis()%1000000;
+		calculateFrame();
+		gamePanel.renderFrame();
 	}
 
 	public void calculateFrame() {
@@ -133,10 +127,13 @@ public class GameRunner implements ActionListener {
 				game.loadLevel(currentLevel);
 			} else if (currentLevel == 0) {
 				game.loadLevel(0);
+			} else {
+				timer.stop();
+				gamePanel.close();
+				new GameOver(true, this, game.getLives(), currentLevel);
 			}
 		}
 		if (!ballsActive) {
-//			System.out.println(game.getLives());
 			if(game.getLives()>1) {
 				game.setLives(game.getLives()-1);
 				ArrayList<Ball> b = game.getBalls();
@@ -144,9 +141,8 @@ public class GameRunner implements ActionListener {
 				game.setBalls(b);
 			} else {
 				timer.stop();
-				System.out.println("lose");
 				gamePanel.close();
-				new GameOver(false, this);
+				new GameOver(false, this, game.getLives(), currentLevel);
 			}
 			
 		}

@@ -19,7 +19,7 @@ public class GameOver {
 	JButton returnToMain;
 	JLabel[] colon = new JLabel[4];
 	
-	public GameOver(boolean won, GameRunner gr) {
+	public GameOver(boolean won, GameRunner gr, int levelNum, int livesNum) {
 		
 		panel = new JPanel() {
 			public void paintComponent(Graphics g) {
@@ -57,7 +57,6 @@ public class GameOver {
 			lose.setVisible(true);
 		}
 		
-		int levelNum = 1;
 		Image img = new ImageIcon(getClass().getClassLoader().
 				getResource("Level reached.png")).getImage().
 				getScaledInstance(219, 16, java.awt.Image.SCALE_SMOOTH);
@@ -82,7 +81,6 @@ public class GameOver {
 		level.setVisible(true);
 		
 		if (won) {
-			int livesNum = 0;
 			img = new ImageIcon(getClass().getClassLoader().
 					getResource("Lives remaining.png")).getImage().
 					getScaledInstance(250, 16, java.awt.Image.SCALE_SMOOTH);
@@ -130,8 +128,5 @@ public class GameOver {
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 600, 600);
-	}
-	public static void main(String[] args) {
-		//new GameOver();
 	}
 }
