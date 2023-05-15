@@ -53,19 +53,20 @@ public class GameRunner implements ActionListener {
 		calculateFrame();
 		gamePanel.renderFrame();
 	}
-
-	public void setupGameloop() {
-
-		/*
-		 * Include code that intiializes stuff in Game with relevent information
-		 * 
-		 */
-		game.loadLevel(0);
-
-		GamePanel.startFrame(gamePanel);
-		lastFrame = System.currentTimeMillis() % 1000000;
-		calculateFrame();
-		gamePanel.renderFrame();
+	
+	public void setupGameloop(){
+	       
+	       /*
+	        * Include code that intiializes stuff in Game with relevent information
+	        * 
+	        * */
+			game.loadLevel(2);
+		
+	       
+	       GamePanel.startFrame(gamePanel);
+	       lastFrame = System.currentTimeMillis()%1000000;
+	       calculateFrame();
+	       gamePanel.renderFrame();
 	}
 
 	public void calculateFrame() {
@@ -74,11 +75,11 @@ public class GameRunner implements ActionListener {
 		Platform platform = game.getPlatform();
 		platform.setPos(new Vector(mousePos.getX(), platform.getPos().getY()));
 
+	    boolean bricksActive = false;
+	    boolean ballsActive = false;
+	    boolean asteroidsActive = false;
 		long currTime = System.currentTimeMillis() % 1000000;
 		double timeDelta = (double) (currTime - lastFrame) / 1000.;
-
-		boolean bricksActive = false;
-		boolean ballsActive = false;
 
 		ArrayList<Ball> balls = game.getBalls();
 		for (Ball ball : balls) {
@@ -93,6 +94,12 @@ public class GameRunner implements ActionListener {
 				if(brick.isActive()) {
 					brick.handleCollisions(ball);
 					bricksActive = true;
+				}
+			}
+			
+			for(Asteroid a : game.getLevel().getAsteroids()) {
+				if(a.isActive()) {
+					asteroidsActive = true;
 				}
 			}
 		}
@@ -110,8 +117,8 @@ public class GameRunner implements ActionListener {
 		for (PowerUp powerup : powerups) {
 			powerup.update(timeDelta);
 		}
-
-		if (!bricksActive) {
+		
+		if(!bricksActive && !asteroidsActive) {
 			game.reset();
 			if (currentLevel > 0 && currentLevel < maxLevel) {
 				currentLevel++;
@@ -129,11 +136,12 @@ public class GameRunner implements ActionListener {
 		}
 		lastFrame = currTime;
 	}
+	
 
 	public static void main(String[] args) {
 		GameRunner game = new GameRunner();
-//		game.setupGameloop();
-//		game.startGameloop();
+		game.setupGameloop();
+		game.startGameloop();
 	}
 
 }
