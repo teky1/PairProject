@@ -34,7 +34,7 @@ public class GameRunner implements ActionListener {
 		if (isRandom) {
 			currentLevel = 0;
 		} else {
-			currentLevel = 1;
+			currentLevel = 3;
 		}
 		setupGameloop();
 		startGameloop();
@@ -43,7 +43,7 @@ public class GameRunner implements ActionListener {
 	public void startGameloop() {
 		started = true;
 		timeStarted = System.currentTimeMillis();
-		lastFrame = System.currentTimeMillis() % 1000000;
+		lastFrame = System.currentTimeMillis() % 1000000000;
 		timer = new Timer(1, this);
 		timer.setInitialDelay(0);
 		timer.start();
@@ -58,7 +58,7 @@ public class GameRunner implements ActionListener {
 		game.loadLevel(currentLevel);
 
 		GamePanel.startFrame(gamePanel);
-		lastFrame = System.currentTimeMillis()%1000000;
+		lastFrame = System.currentTimeMillis()%1000000000;
 		calculateFrame();
 		gamePanel.renderFrame();
 	}
@@ -80,7 +80,7 @@ public class GameRunner implements ActionListener {
 	    boolean bricksActive = false;
 	    boolean ballsActive = false;
 	    boolean asteroidsActive = false;
-		long currTime = System.currentTimeMillis() % 1000000;
+		long currTime = System.currentTimeMillis() % 1000000000;
 		double timeDelta = (double) (currTime - lastFrame) / 1000.;
 
 		ArrayList<Ball> balls = game.getBalls();
